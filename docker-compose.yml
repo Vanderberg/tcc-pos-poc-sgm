@@ -1,0 +1,33 @@
+version: '3.4'
+
+networks: 
+  rede_services:
+
+services:
+
+  db:
+    container_name: mysql-db-DDD
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+      - 33060:33060
+    env_file:
+      - mysql.env
+    volumes:
+      # Volume dos dados 
+      - ./dados:/var/lib/mysql
+    networks:
+      - rede_services      
+      
+  admin_db:
+    container_name: mysql-admin-DDD
+    image: nazarpc/phpmyadmin
+    links:
+      - db:mysql
+    ports:
+      - 8082:80
+    depends_on:
+      - db
+    networks:
+      - rede_services  
+   
