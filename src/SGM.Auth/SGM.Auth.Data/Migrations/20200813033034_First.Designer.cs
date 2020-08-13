@@ -9,8 +9,8 @@ using SGM.Auth.Data.Context;
 namespace SGM.Auth.Data.Migrations
 {
     [DbContext(typeof(AuthContext))]
-    [Migration("20200813013106_first")]
-    partial class first
+    [Migration("20200813033034_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <ItemGroup>
+    <ProjectReference Include="..\SGM.Auth.CrossCutting\SGM.Auth.CrossCutting.csproj" />
+    <ProjectReference Include="..\SGM.Auth.Domain\SGM.Auth.Domain.csproj" />
+    <ProjectReference Include="..\SGM.Auth.Service\SGM.Auth.Service.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
