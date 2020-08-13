@@ -1,0 +1,27 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SGM.Auth.Domain.Entities;
+
+namespace SGM.Auth.Data.Mapping
+{
+    public class UserMap : IEntityTypeConfiguration<UserEntity>
+    {
+        public void Configure(EntityTypeBuilder<UserEntity> builder)
+        {
+            builder.ToTable("User");
+            builder.HasKey(u => u.Id);
+            builder.HasIndex(u => u.Email)
+                .IsUnique();
+            builder.Property(u => u.FirstName)
+                .IsRequired()
+                .HasMaxLength(60);
+            builder.Property(u => u.LastName)
+                .IsRequired()
+                .HasMaxLength(60);
+            builder.Property(u => u.Password)
+                .IsRequired();
+            builder.Property(u => u.Email)
+                .HasMaxLength(100);
+        }
+    }
+}
