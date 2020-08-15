@@ -1,2 +1,2 @@
-# tcc-pos-poc-sgm
+# Sistema de Gestão Municipal (SGM)
 POC do TCC da Pós em Arquitetura de Sistemas Distribuídos / Puc Minas
