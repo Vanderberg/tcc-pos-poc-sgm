@@ -14,6 +14,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
         {
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             serviceCollection.AddScoped<IUserRepository, UserImplementation>();
+            serviceCollection.AddScoped<ConfigureSeed>();
 
             serviceCollection.AddDbContext<AuthContext>(
                 options => options.UseMySql("server=127.0.0.1;userid=root;password=456852;database=SGM_AUTH")

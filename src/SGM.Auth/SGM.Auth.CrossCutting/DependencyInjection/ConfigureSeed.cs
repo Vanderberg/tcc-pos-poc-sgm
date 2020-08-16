@@ -27,7 +27,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
             UserEntity u1 = new UserEntity
             {
                 Id = Guid.NewGuid(),
-                Email = "admin@company.com",
+                Email = "admin@bomdestino.gov.br",
                 FirstName = "Alberto",
                 LastName = "Roberto",
                 Password = "admin",
@@ -38,7 +38,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
             UserEntity u2 = new UserEntity
             {
                 Id = Guid.NewGuid(),
-                Email = "monitor@company.com",
+                Email = "monitor@bomdestino.gov.br",
                 FirstName = "Vanessa",
                 LastName = "Roberts",
                 Password = "monitor",
@@ -49,7 +49,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
             UserEntity u3 = new UserEntity
             {
                 Id = Guid.NewGuid(),
-                Email = "user@company.com",
+                Email = "user@bomdestino.gov.br",
                 FirstName = "João",
                 LastName = "da Silva",
                 Password = "user",
@@ -60,7 +60,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
             UserEntity u4 = new UserEntity
             {
                 Id = Guid.NewGuid(),
-                Email = "manutencao@company.com",
+                Email = "manutencao@bomdestino.gov.br",
                 FirstName = "Marcos",
                 LastName = "Daniel",
                 Password = "manutencao",

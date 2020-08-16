@@ -1,0 +1,67 @@
+using System;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using SGM.Auth.Domain.Security;
+
+namespace SGM.Auth.Application.Configure
+{
+    public class ConfigureServicesJWT
+    {
+        public static void ConfiureToken(IServiceCollection services, IConfiguration configuration)
+        {
+            var signingConfigurarions = new SigningConfigurations();
+            services.AddSingleton(signingConfigurarions);
+
+            var tokenConfigurations = new TokenConfigurations();
+            new ConfigureFromConfigurationOptions<TokenConfigurations>(
+                configuration.GetSection("TokenConfigurations"))
+                     .Configure(tokenConfigurations);
+            services.AddSingleton(tokenConfigurations);
+
+            /* services.AddAuthentication(authOptions =>
+             {
+                 authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                 authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+             }).AddJwtBearer(bearerOptions =>
+             {
+                 var paramsValidation = bearerOptions.TokenValidationParameters;
+                 paramsValidation.IssuerSigningKey = signingConfigurarions.Key;
+                 paramsValidation.ValidAudience = tokenConfigurations.Audience;
+                 paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
+
+                 // Valida a assinatura de um token recebido
+                 paramsValidation.ValidateIssuerSigningKey = true;
+
+                 // Verifica se um token recebido ainda é válido
+                 paramsValidation.ValidateLifetime = true;
+
+                 // Tempo de tolerância para a expiração de um token (utilizado
+                 // caso haja problemas de sincronismo de horário entre diferentes
+                 // computadores envolvidos no processo de comunicação)
+                 paramsValidation.ClockSkew = TimeSpan.Zero;
+             });
+
+             // Ativa o uso do token como forma de autorizar o acesso
+             // a recursos deste projeto
+             services.AddAuthorization(auth =>
+             {
+                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+                     .RequireAuthenticatedUser().Build());
+             });
+
+
+
+             /*                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                             {
+                                 Description = "Entre com o Token JWT",
+                                 Name = "Authorization",
+                                 In = ParameterLocation.Header,
+                                 Type = SecuritySchemeType.ApiKey
+                             }); */
+        }
+    }
+}

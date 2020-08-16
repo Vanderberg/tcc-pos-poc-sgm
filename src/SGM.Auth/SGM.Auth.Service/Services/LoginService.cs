@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using SGM.Auth.Domain.Repository;
 using SGM.Auth.Domain.Security;
 using System;
+using SGM.Auth.Domain.Entities.Enums;
 
 namespace SGM.Auth.Service.Services
 {
@@ -100,6 +101,7 @@ namespace SGM.Auth.Service.Services
                 accessToken = token,
                 userName = user.Email,
                 name = user.FirstName,
+                role = user.AcessLevel,
                 message = "Usuário Logado com sucesso"
             };
         }
