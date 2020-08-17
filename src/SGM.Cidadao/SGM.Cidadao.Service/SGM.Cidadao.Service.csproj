@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SGM.Cidadao.Data\SGM.Cidadao.Data.csproj" />
+    <ProjectReference Include="..\SGM.Cidadao.Domain\SGM.Cidadao.Domain.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>    
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>  
+</Project>

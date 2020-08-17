@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SGM.Cidadao.Domain\SGM.Cidadao.Domain.csproj" />
+    <ProjectReference Include="..\SGM.Cidadao.Data\SGM.Cidadao.Data.csproj" />
+    <ProjectReference Include="..\SGM.Cidadao.Service\SGM.Cidadao.Service.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>  
+</Project>
