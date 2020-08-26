@@ -24,7 +24,7 @@ namespace SGM.Auth.Application
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureService.ConfigureDependenciesService(services);
-            ConfigureRepository.ConfigureDependenciesRepository(services);
+            ConfigureRepository.ConfigureDependenciesRepository(services, Configuration);
             ConfigureServicesJWT.ConfiureToken(services, Configuration);
             ConfigureServicesSwagger.ConfigureSwagger(services);
             services.AddControllers();
