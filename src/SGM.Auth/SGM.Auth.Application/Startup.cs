@@ -40,7 +40,7 @@ namespace SGM.Auth.Application
 
             configureSeed.Seed();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseSwagger();

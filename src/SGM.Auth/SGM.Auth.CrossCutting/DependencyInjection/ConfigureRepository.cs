@@ -17,7 +17,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<ConfigureSeed>();
 
             serviceCollection.AddDbContext<AuthContext>(
-                options => options.UseMySql("server=127.0.0.1;userid=root;password=456852;database=SGM_AUTH")
+                options => options.UseMySql("server=db;userid=root;password=456852;database=SGM_AUTH")
             );
         }
     }

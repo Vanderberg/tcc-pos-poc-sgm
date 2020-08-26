@@ -1,31 +1,33 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SGM.Auth", "SGM.Auth", "{F058CA03-4739-4D3B-8F2A-4D703A9F3EB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Auth.Application", "SGM.Auth\SGM.Auth.Application\SGM.Auth.Application.csproj", "{7ACB70D0-5CF1-466B-899A-81781B57DAEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Auth.Application", "SGM.Auth\SGM.Auth.Application\SGM.Auth.Application.csproj", "{7ACB70D0-5CF1-466B-899A-81781B57DAEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Auth.Domain", "SGM.Auth\SGM.Auth.Domain\SGM.Auth.Domain.csproj", "{07A19053-B6BB-4638-B756-96D7E60F777F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Auth.Domain", "SGM.Auth\SGM.Auth.Domain\SGM.Auth.Domain.csproj", "{07A19053-B6BB-4638-B756-96D7E60F777F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Auth.Service", "SGM.Auth\SGM.Auth.Service\SGM.Auth.Service.csproj", "{7787E93D-2F4F-48EF-ACD7-F0A7A210D173}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Auth.Service", "SGM.Auth\SGM.Auth.Service\SGM.Auth.Service.csproj", "{7787E93D-2F4F-48EF-ACD7-F0A7A210D173}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Auth.Data", "SGM.Auth\SGM.Auth.Data\SGM.Auth.Data.csproj", "{16358EBB-AE78-4A7A-B5B4-08B579922F14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Auth.Data", "SGM.Auth\SGM.Auth.Data\SGM.Auth.Data.csproj", "{16358EBB-AE78-4A7A-B5B4-08B579922F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Auth.CrossCutting", "SGM.Auth\SGM.Auth.CrossCutting\SGM.Auth.CrossCutting.csproj", "{D6541867-6F2E-4A44-AAE4-B02E61100EBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Auth.CrossCutting", "SGM.Auth\SGM.Auth.CrossCutting\SGM.Auth.CrossCutting.csproj", "{D6541867-6F2E-4A44-AAE4-B02E61100EBF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SGM.Cidadao", "SGM.Cidadao", "{19B4254A-C3F5-4468-8204-50FA5D533ED1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Cidadao.Application", "SGM.Cidadao\SGM.Cidadao.Application\SGM.Cidadao.Application.csproj", "{A2F50D94-95D5-47E3-9608-CF7ABB0B3103}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Cidadao.Application", "SGM.Cidadao\SGM.Cidadao.Application\SGM.Cidadao.Application.csproj", "{A2F50D94-95D5-47E3-9608-CF7ABB0B3103}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Cidadao.CrossCutting", "SGM.Cidadao\SGM.Cidadao.CrossCutting\SGM.Cidadao.CrossCutting.csproj", "{A0BBF542-BBEA-4B1F-BD30-CFF728166C8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Cidadao.CrossCutting", "SGM.Cidadao\SGM.Cidadao.CrossCutting\SGM.Cidadao.CrossCutting.csproj", "{A0BBF542-BBEA-4B1F-BD30-CFF728166C8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Cidadao.Data", "SGM.Cidadao\SGM.Cidadao.Data\SGM.Cidadao.Data.csproj", "{01082B31-47D9-4AD0-A000-375331004FD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Cidadao.Data", "SGM.Cidadao\SGM.Cidadao.Data\SGM.Cidadao.Data.csproj", "{01082B31-47D9-4AD0-A000-375331004FD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Cidadao.Domain", "SGM.Cidadao\SGM.Cidadao.Domain\SGM.Cidadao.Domain.csproj", "{2B90F068-014B-47F1-B4E9-CEA0CF33E058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Cidadao.Domain", "SGM.Cidadao\SGM.Cidadao.Domain\SGM.Cidadao.Domain.csproj", "{2B90F068-014B-47F1-B4E9-CEA0CF33E058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.Cidadao.Service", "SGM.Cidadao\SGM.Cidadao.Service\SGM.Cidadao.Service.csproj", "{5D95ACBB-EC31-4E2B-BC26-26766A7CDFDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Cidadao.Service", "SGM.Cidadao\SGM.Cidadao.Service\SGM.Cidadao.Service.csproj", "{5D95ACBB-EC31-4E2B-BC26-26766A7CDFDC}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8AB3C867-135E-400B-A201-DD746ADA11BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,9 +37,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7ACB70D0-5CF1-466B-899A-81781B57DAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -160,6 +159,21 @@ Global
 		{5D95ACBB-EC31-4E2B-BC26-26766A7CDFDC}.Release|x64.Build.0 = Release|Any CPU
 		{5D95ACBB-EC31-4E2B-BC26-26766A7CDFDC}.Release|x86.ActiveCfg = Release|Any CPU
 		{5D95ACBB-EC31-4E2B-BC26-26766A7CDFDC}.Release|x86.Build.0 = Release|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Debug|x64.Build.0 = Debug|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Debug|x86.Build.0 = Debug|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Release|x64.ActiveCfg = Release|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Release|x64.Build.0 = Release|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Release|x86.ActiveCfg = Release|Any CPU
+		{8AB3C867-135E-400B-A201-DD746ADA11BD}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7ACB70D0-5CF1-466B-899A-81781B57DAEA} = {F058CA03-4739-4D3B-8F2A-4D703A9F3EB0}
@@ -172,5 +186,8 @@ Global
 		{01082B31-47D9-4AD0-A000-375331004FD6} = {19B4254A-C3F5-4468-8204-50FA5D533ED1}
 		{2B90F068-014B-47F1-B4E9-CEA0CF33E058} = {19B4254A-C3F5-4468-8204-50FA5D533ED1}
 		{5D95ACBB-EC31-4E2B-BC26-26766A7CDFDC} = {19B4254A-C3F5-4468-8204-50FA5D533ED1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {992E626B-72E0-4456-8B44-89BBCB0701DF}
 	EndGlobalSection
 EndGlobal
