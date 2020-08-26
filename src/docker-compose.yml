@@ -36,7 +36,8 @@ services:
       - rede_services 
 
   sgm.auth.application:
-    image: ${DOCKER_REGISTRY-}sgmauthapplication
+    container_name: sgm.auth
+    image: ${DOCKER_REGISTRY-}sgm.auth
     build:
       context: .
       dockerfile: SGM.Auth/SGM.Auth.Application/Dockerfile  
