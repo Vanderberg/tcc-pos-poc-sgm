@@ -1,6 +1,6 @@
 using System;
 
-namespace SGM.Auth.Domain.Entities
+namespace SGM.Shared.Domain.Entities
 {
     public abstract class BaseEntity
     {

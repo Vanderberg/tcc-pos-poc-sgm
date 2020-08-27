@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SGM.Auth.Data.Context;
-using SGM.Auth.Data.Repository;
-using SGM.Auth.Domain.Entities;
+using SGM.Shared.Data.Context;
+using SGM.Shared.Data.Repository;
 using SGM.Auth.Domain.Repository;
+using SGM.Shared.Domain.Entities;
 
 namespace SGM.Auth.Data.Implementations
 {
@@ -11,7 +11,7 @@ namespace SGM.Auth.Data.Implementations
     {
         private DbSet<UserEntity> _dataset;
 
-        public UserImplementation(AuthContext context) : base(context)
+        public UserImplementation(SgmContext context) : base(context)
         {
             _dataset = context.Set<UserEntity>();
         }

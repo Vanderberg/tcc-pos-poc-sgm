@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SGM.Auth.Domain.Entities;
+using SGM.Shared.Domain.Entities;
 
-namespace SGM.Auth.Data.Mapping
+namespace SGM.Shared.Data.Mapping
 {
     public class UserMap : IEntityTypeConfiguration<UserEntity>
     {

@@ -6,7 +6,7 @@ networks:
 services:
 
   db:
-    container_name: mysql-db-DDD
+    container_name: mysql-db-poc
     image: mysql:5.7
     ports:
       - 3306:3306
@@ -15,12 +15,12 @@ services:
       - mysql.env
     volumes:
       # Volume dos dados 
-      - ./dados:/var/lib/mysql
+      - ../dados:/var/lib/mysql
     networks:
-      - rede_services      
+      - rede_services
       
   admin_db:
-    container_name: mysql-admin-DDD
+    container_name: mysql-admin-poc
     image: nazarpc/phpmyadmin
     links:
       - db:mysql
@@ -29,5 +29,5 @@ services:
     depends_on:
       - db
     networks:
-      - rede_services  
+      - rede_services 
    

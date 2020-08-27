@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using SGM.Auth.Data.Mapping;
-using SGM.Auth.Domain.Entities;
+using SGM.Shared.Data.Mapping;
+using SGM.Shared.Domain.Entities;
 
-namespace SGM.Auth.Data.Context
+namespace SGM.Shared.Data.Context
 {
-    public class AuthContext : DbContext
+    public class SgmContext : DbContext
     {
         public DbSet<UserEntity> Users { get; set; }
-        public AuthContext(DbContextOptions<AuthContext> options) : base(options) { }
+        public SgmContext(DbContextOptions<SgmContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

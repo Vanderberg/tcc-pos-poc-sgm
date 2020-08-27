@@ -1,4 +1,4 @@
-namespace SGM.Auth.Domain.Entities.Enums
+namespace SGM.Shared.Domain.Entities.Enums
 {
     public enum Role : int
     {

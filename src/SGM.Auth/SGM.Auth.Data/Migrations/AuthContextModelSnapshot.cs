@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SGM.Auth.Data.Context;
+using SGM.Shared.Data.Context;
 
 namespace SGM.Auth.Data.Migrations
 {
-    [DbContext(typeof(AuthContext))]
+    [DbContext(typeof(SgmContext))]
     partial class AuthContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

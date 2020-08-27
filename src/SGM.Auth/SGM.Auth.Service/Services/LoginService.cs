@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using SGM.Auth.Domain.Dtos;
-using SGM.Auth.Domain.Entities;
+using SGM.Shared.Domain.Entities;
 using SGM.Auth.Domain.Interfaces.Services.User;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using SGM.Auth.Domain.Repository;
 using SGM.Auth.Domain.Security;
 using System;
-using SGM.Auth.Domain.Entities.Enums;
+using SGM.Shared.Domain.Entities.Enums;
 
 namespace SGM.Auth.Service.Services
 {

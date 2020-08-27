@@ -1,5 +1,6 @@
-using SGM.Auth.Domain.Entities.Enums;
-namespace SGM.Auth.Domain.Entities
+using SGM.Shared.Domain.Entities.Enums;
+
+namespace SGM.Shared.Domain.Entities
 {
     public class UserEntity : BaseEntity
     {
@@ -9,4 +10,4 @@ namespace SGM.Auth.Domain.Entities
         public string Email { get; set; }
         public Role AcessLevel { get; set; }
     }
-}
+}    

@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using SGM.Auth.Domain.Entities;
-using SGM.Auth.Domain.Interfaces;
+using SGM.Shared.Domain.Entities;
+using SGM.Shared.Domain.Interfaces;
 
 namespace SGM.Auth.Domain.Repository
 {

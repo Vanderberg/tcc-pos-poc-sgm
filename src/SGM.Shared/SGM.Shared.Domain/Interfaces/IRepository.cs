@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SGM.Auth.Domain.Entities;
+using SGM.Shared.Domain.Entities;
 
-namespace SGM.Auth.Domain.Interfaces
+namespace SGM.Shared.Domain.Interfaces
 {
     public interface IRepository<T> where T : BaseEntity
     {

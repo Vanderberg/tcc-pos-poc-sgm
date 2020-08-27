@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SGM.Auth.Data.Context;
 using SGM.Auth.Data.Implementations;
-using SGM.Auth.Data.Repository;
-using SGM.Auth.Domain.Interfaces;
 using SGM.Auth.Domain.Repository;
+using SGM.Shared.Data.Repository;
+using SGM.Shared.Domain.Interfaces;
+using SGM.Shared.Data.Context;
 
 namespace SGM.Auth.CrossCutting.DependencyInjection
 {
@@ -17,10 +17,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<IUserRepository, UserImplementation>();
             serviceCollection.AddScoped<ConfigureSeed>();
 
-            /*serviceCollection.AddDbContext<AuthContext>(
-                options => options.UseMySql("server=db;userid=root;password=456852;database=SGM_AUTH")
-            );*/
-            serviceCollection.AddDbContext<AuthContext>(
+            serviceCollection.AddDbContext<SgmContext>(
                 options => options.UseMySql(configuration.GetConnectionString("InputsContext"))
             );
             

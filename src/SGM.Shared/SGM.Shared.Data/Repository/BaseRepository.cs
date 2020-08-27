@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SGM.Auth.Data.Context;
-using SGM.Auth.Domain.Entities;
-using SGM.Auth.Domain.Interfaces;
+using SGM.Shared.Data.Context;
+using SGM.Shared.Domain.Entities;
+using SGM.Shared.Domain.Interfaces;
 
-namespace SGM.Auth.Data.Repository
+namespace SGM.Shared.Data.Repository
 {
-    public class BaseRepository<T> : IRepository<T> where T : BaseEntity
+public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        protected readonly AuthContext _context;
+        protected readonly SgmContext _context;
         private DbSet<T> _dataset;
-        public BaseRepository(AuthContext context)
+        public BaseRepository(SgmContext context)
         {
             _context = context;
             _dataset = _context.Set<T>();

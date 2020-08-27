@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using SGM.Auth.Domain.Entities;
-using SGM.Auth.Domain.Interfaces;
+using SGM.Shared.Domain.Entities;
+using SGM.Shared.Domain.Interfaces;
 using SGM.Auth.Domain.Interfaces.Services.User;
 
 namespace SGM.Auth.Service.Services

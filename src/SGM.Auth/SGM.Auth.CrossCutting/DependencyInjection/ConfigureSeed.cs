@@ -1,16 +1,16 @@
 using System;
-using SGM.Auth.Data.Context;
-using SGM.Auth.Domain.Entities;
-using SGM.Auth.Domain.Entities.Enums;
 using System.Linq;
+using SGM.Shared.Data.Context;
+using SGM.Shared.Domain.Entities;
+using SGM.Shared.Domain.Entities.Enums;
 
 namespace SGM.Auth.CrossCutting.DependencyInjection
 {
     public class ConfigureSeed
     {
-        private readonly AuthContext _context;
+        private readonly SgmContext _context;
 
-        public ConfigureSeed(AuthContext context)
+        public ConfigureSeed(SgmContext context)
         {
             _context = context;
         }
