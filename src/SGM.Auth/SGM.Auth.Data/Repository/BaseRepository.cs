@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SGM.Shared.Data.Context;
+using SGM.Auth.Data.Context;
 using SGM.Shared.Domain.Entities;
 using SGM.Shared.Domain.Interfaces;
 
-namespace SGM.Shared.Data.Repository
+namespace SGM.Auth.Data.Repository
 {
 public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {

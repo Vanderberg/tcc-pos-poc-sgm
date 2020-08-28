@@ -1,8 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using SGM.Shared.Data.Mapping;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Auth.Data.Mapping;
 using SGM.Shared.Domain.Entities;
 
-namespace SGM.Shared.Data.Context
+namespace SGM.Auth.Data.Context
 {
     public class SgmContext : DbContext
     {

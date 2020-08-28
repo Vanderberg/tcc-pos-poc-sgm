@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SGM.Shared\SGM.Shared.Data\SGM.Shared.Data.csproj" />
     <ProjectReference Include="..\SGM.Auth.Domain\SGM.Auth.Domain.csproj" />
     <ProjectReference Include="..\SGM.Auth.Data\SGM.Auth.Data.csproj" />
     <ProjectReference Include="..\SGM.Auth.Service\SGM.Auth.Service.csproj" />        

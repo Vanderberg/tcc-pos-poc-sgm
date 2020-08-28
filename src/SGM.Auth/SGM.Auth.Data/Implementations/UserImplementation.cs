@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SGM.Shared.Data.Context;
-using SGM.Shared.Data.Repository;
+using SGM.Auth.Data.Context;
+using SGM.Auth.Data.Repository;
 using SGM.Auth.Domain.Repository;
 using SGM.Shared.Domain.Entities;
 

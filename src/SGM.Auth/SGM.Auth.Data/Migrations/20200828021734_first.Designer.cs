@@ -2,22 +2,24 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SGM.Shared.Data.Context;
+using SGM.Auth.Data.Context;
 
 namespace SGM.Auth.Data.Migrations
 {
     [DbContext(typeof(SgmContext))]
-    partial class AuthContextModelSnapshot : ModelSnapshot
+    [Migration("20200828021734_first")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("SGM.Auth.Domain.Entities.UserEntity", b =>
+            modelBuilder.Entity("SGM.Shared.Domain.Entities.UserEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

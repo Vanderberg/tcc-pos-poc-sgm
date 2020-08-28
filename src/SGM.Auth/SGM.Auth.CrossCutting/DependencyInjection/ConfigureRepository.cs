@@ -3,9 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SGM.Auth.Data.Implementations;
 using SGM.Auth.Domain.Repository;
-using SGM.Shared.Data.Repository;
+using SGM.Auth.Data.Repository;
 using SGM.Shared.Domain.Interfaces;
-using SGM.Shared.Data.Context;
+using SGM.Auth.Data.Context;
 
 namespace SGM.Auth.CrossCutting.DependencyInjection
 {

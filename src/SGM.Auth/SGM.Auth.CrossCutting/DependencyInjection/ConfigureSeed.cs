@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using SGM.Shared.Data.Context;
+using SGM.Auth.Data.Context;
 using SGM.Shared.Domain.Entities;
 using SGM.Shared.Domain.Entities.Enums;
 
