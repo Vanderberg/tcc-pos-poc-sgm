@@ -4,4 +4,10 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\SGM.Cidadao.Domain\SGM.Cidadao.Domain.csproj" />
+        <ProjectReference Include="..\SGM.Cidadao.Data\SGM.Cidadao.Data.csproj" />
+        <ProjectReference Include="..\SGM.Cidadao.Service\SGM.Cidadao.Service.csproj" />
+    </ItemGroup>    
+
 </Project>

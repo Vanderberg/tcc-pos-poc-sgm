@@ -19,6 +19,7 @@
 
 <ItemGroup>
   <ProjectReference Include="..\SGM.Auth.Domain\SGM.Auth.Domain.csproj" />
+  <ProjectReference Include="..\..\SGM.Shared\SGM.Shared.Domain\SGM.Shared.Domain.csproj" />
 </ItemGroup>
 
 <ItemGroup>
