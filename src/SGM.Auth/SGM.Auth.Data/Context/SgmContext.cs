@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SGM.Auth.Data.Mapping;
+
 using SGM.Shared.Domain.Entities;
 
 namespace SGM.Auth.Data.Context

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SGM.Auth.Data.Context;
+using SGM.Cidadao.Data.Context;
 using SGM.Shared.Domain.Entities;
 using SGM.Shared.Domain.Interfaces;
 
-namespace SGM.Auth.Data.Repository
+namespace SGM.Cidadao.Data.Repository
 {
+    
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        protected readonly SgmContext _context;
+        protected readonly SgmContextCidadao _context;
         private DbSet<T> _dataset;
-        public BaseRepository(SgmContext context)
+        public BaseRepository(SgmContextCidadao context)
         {
             _context = context;
             _dataset = _context.Set<T>();

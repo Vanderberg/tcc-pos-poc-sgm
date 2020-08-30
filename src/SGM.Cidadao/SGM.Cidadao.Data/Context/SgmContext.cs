@@ -2,12 +2,12 @@
 using SGM.Cidadao.Data.Mapping;
 using SGM.Cidadao.Domain.Entities;
 
-namespace SGM.Cidadao.Data
+namespace SGM.Cidadao.Data.Context
 {
-    public class SgmContext : DbContext
+    public class SgmContextCidadao : DbContext
     {
-        public DbSet<PoliticaPublica> Users { get; set; }
-        public SgmContext(DbContextOptions<SgmContext> options) : base(options) { }
+        public DbSet<PoliticaPublica> PoliticaPublicas { get; set; }
+        public SgmContextCidadao(DbContextOptions<SgmContextCidadao> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

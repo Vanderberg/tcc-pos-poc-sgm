@@ -5,10 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SGM.Cidadao.Data.Context;
+using SGM.Cidadao.Data.Repository;
+using SGM.Shared.Domain.Interfaces;
 
 namespace SGM.Cidadao.Application
 {
@@ -24,6 +28,10 @@ namespace SGM.Cidadao.Application
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddDbContext<SgmContextCidadao>(
+                options => options.UseMySql("server=127.0.0.1;userid=root;password=456852;database=SGM_CIDADAO")
+            );
             services.AddControllers();
         }
 

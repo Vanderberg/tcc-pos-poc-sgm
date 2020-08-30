@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SGM.Auth.Data.Context;
+using SGM.Cidadao.Data.Context;
 
-namespace SGM.Auth.Data.Migrations
+namespace SGM.Cidadao.Data.Migrations
 {
-    [DbContext(typeof(SgmContext))]
-    partial class SgmContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(SgmContextCidadao))]
+    [Migration("20200830192917_First")]
+    partial class First
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,47 +63,6 @@ namespace SGM.Auth.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PoliticaPublica");
-                });
-
-            modelBuilder.Entity("SGM.Shared.Domain.Entities.UserEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<int>("AcessLevel")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("CreateAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
-                        .HasMaxLength(60);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
-                        .HasMaxLength(60);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime?>("UpdateAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

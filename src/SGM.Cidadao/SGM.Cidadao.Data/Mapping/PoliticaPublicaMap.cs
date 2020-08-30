@@ -8,7 +8,7 @@ namespace SGM.Cidadao.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<PoliticaPublica> builder)
         {
-            builder.ToTable("PolicaPublica");
+            builder.ToTable("PoliticaPublica");
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Titulo)
                 .IsRequired()
