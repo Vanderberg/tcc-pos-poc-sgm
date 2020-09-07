@@ -20,7 +20,6 @@ namespace SGM.Cidadao.Data.Mapping
                 .IsRequired();
             builder.Property(p => p.OrcamentoPrevisto)
                 .IsRequired();
-            builder.Property(p => p.OrcamentoRealizado);
             builder.Property(p => p.NomeResponsavel)
                 .IsRequired();
 

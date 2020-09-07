@@ -9,7 +9,7 @@ using System.Net;
 namespace SGM.Auth.Application.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("auth/[controller]")]
     public class LoginController : ControllerBase
     {
         [AllowAnonymous]
