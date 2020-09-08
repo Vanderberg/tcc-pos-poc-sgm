@@ -6,13 +6,13 @@ namespace SGM.Cidadao.Data.Context
 {
     public class SgmContextCidadao : DbContext
     {
-        public DbSet<PoliticaPublica> PoliticaPublicas { get; set; }
+        public DbSet<PoliticaPublicaEntity> PoliticaPublicas { get; set; }
         public SgmContextCidadao(DbContextOptions<SgmContextCidadao> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<PoliticaPublica>(new PoliticaPublicaMap().Configure);
+            modelBuilder.Entity<PoliticaPublicaEntity>(new PoliticaPublicaMap().Configure);
         }
     }
 }

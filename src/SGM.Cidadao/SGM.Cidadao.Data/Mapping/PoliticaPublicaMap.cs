@@ -4,9 +4,9 @@ using SGM.Cidadao.Domain.Entities;
 
 namespace SGM.Cidadao.Data.Mapping
 {
-    public class PoliticaPublicaMap : IEntityTypeConfiguration<PoliticaPublica>
+    public class PoliticaPublicaMap : IEntityTypeConfiguration<PoliticaPublicaEntity>
     {
-        public void Configure(EntityTypeBuilder<PoliticaPublica> builder)
+        public void Configure(EntityTypeBuilder<PoliticaPublicaEntity> builder)
         {
             builder.ToTable("PoliticaPublica");
             builder.HasKey(p => p.Id);

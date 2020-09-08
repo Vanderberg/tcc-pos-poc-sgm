@@ -5,7 +5,7 @@ using SGM.Shared.Domain.Entities;
 
 namespace SGM.Cidadao.Domain.Entities
 {
-    public class PoliticaPublica : BaseEntity
+    public class PoliticaPublicaEntity : BaseEntity
     {
         public string Titulo { get; set; }
         public string Descricao { get; set; }
