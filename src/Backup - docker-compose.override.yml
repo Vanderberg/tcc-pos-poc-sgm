@@ -11,3 +11,14 @@ services:
       - db
     networks:
       - rede_services  
+
+  sgm.cidadao.application:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - 8001:80
+    depends_on:
+      - db
+    networks:
+      - rede_services        
+

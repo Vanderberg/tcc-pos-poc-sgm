@@ -1,11 +1,9 @@
-﻿using AutoMapper;
-using SGM.Cidadao.Domain.Dtos;
+﻿
 using SGM.Cidadao.Domain.Entities;
 using SGM.Cidadao.Domain.Interfaces.Services.PoliticaPublica;
 using SGM.Shared.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SGM.Cidadao.Service.Services
@@ -14,13 +12,9 @@ namespace SGM.Cidadao.Service.Services
     {
         private IRepository<PoliticaPublicaEntity> _repository;
 
-        private readonly IMapper _mapper;
-
-        public PoliticaPublicaService(IRepository<PoliticaPublicaEntity> repository, IMapper mapper)
+        public PoliticaPublicaService(IRepository<PoliticaPublicaEntity> repository)
         {
             _repository = repository;
-            _mapper = mapper;
-
         }
 
         public async Task<bool> Delete(Guid id)
@@ -28,30 +22,34 @@ namespace SGM.Cidadao.Service.Services
             return await _repository.DeleteAsync(id);
         }
 
-        public async Task<PoliticaPublicaDto> Get(Guid id)
+        public async Task<PoliticaPublicaEntity> Get(Guid id)
         {
-            var entity = await _repository.SelectAsync(id);
-            return _mapper.Map<PoliticaPublicaDto>(entity) ?? new PoliticaPublicaDto();
+            return await _repository.SelectAsync(id);
+            //var entity = await _repository.SelectAsync(id);
+            //return _mapper.Map<PoliticaPublicaEntity>(entity) ?? new PoliticaPublicaEntity();
         }
 
-        public async Task<IEnumerable<PoliticaPublicaDto>> GetAll()
+        public async Task<IEnumerable<PoliticaPublicaEntity>> GetAll()
         {
-            var listentity = await _repository.SelectAsync();
-            return _mapper.Map<IEnumerable<PoliticaPublicaDto>>(listentity);
+            return await _repository.SelectAsync(); 
+            //var listentity = await _repository.SelectAsync();
+            //return _mapper.Map<IEnumerable<PoliticaPublicaEntity>>(listentity);
         }
 
-        public async Task<PoliticaPublicaDto> Post(PoliticaPublicaDto politica)
+        public async Task<PoliticaPublicaEntity> Post(PoliticaPublicaEntity politica)
         {
-            var entity = _mapper.Map<PoliticaPublicaEntity>(politica);
-            var result = await _repository.InsertAsync(entity);
-            return _mapper.Map<PoliticaPublicaDto>(result);
+            return await _repository.InsertAsync(politica);
+            //var entity = _mapper.Map<PoliticaPublicaEntity>(politica);
+            //var result = await _repository.InsertAsync(entity);
+            //return _mapper.Map<PoliticaPublicaEntity>(result);
         }
 
-        public async Task<PoliticaPublicaDto> Put(PoliticaPublicaDto politica)
+        public async Task<PoliticaPublicaEntity> Put(PoliticaPublicaEntity politica)
         {
-            var entity = _mapper.Map<PoliticaPublicaEntity>(politica);
-            var result = await _repository.UpdateAsync(entity);
-            return _mapper.Map<PoliticaPublicaDto>(result);
+            return await _repository.UpdateAsync(politica);
+            //var entity = _mapper.Map<PoliticaPublicaEntity>(politica);
+            //var result = await _repository.UpdateAsync(entity);
+            //return _mapper.Map<PoliticaPublicaEntity>(result);
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SGM.Cidadao.Domain.Dtos;
+using SGM.Cidadao.Domain.Entities;
 
 namespace SGM.Cidadao.Domain.Interfaces.Services.PoliticaPublica
 {
     public interface IPoliticaPublicaService
     {
-        Task<PoliticaPublicaDto> Get(Guid id);
-        Task<IEnumerable<PoliticaPublicaDto>> GetAll();
-        Task<PoliticaPublicaDto> Post(PoliticaPublicaDto politica);
-        Task<PoliticaPublicaDto> Put(PoliticaPublicaDto politica);
+        Task<PoliticaPublicaEntity> Get(Guid id);
+        Task<IEnumerable<PoliticaPublicaEntity>> GetAll();
+        Task<PoliticaPublicaEntity> Post(PoliticaPublicaEntity politica);
+        Task<PoliticaPublicaEntity> Put(PoliticaPublicaEntity politica);
         Task<bool> Delete(Guid id);
     }
 }
