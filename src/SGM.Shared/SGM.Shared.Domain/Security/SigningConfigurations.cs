@@ -12,13 +12,8 @@ namespace SGM.Shared.Domain.Security
 
         public SigningConfigurations()
         {
-            using (var provider = new RSACryptoServiceProvider(2048))
-            {
-                Key = new RsaSecurityKey(provider.ExportParameters(true));
-            }
-
-            SigningCredentials = new SigningCredentials(Key, SecurityAlgorithms.RsaSha256Signature);
+            Key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("fedaf7d8863b48e197b9287d492b708e"));
+            SigningCredentials = new SigningCredentials(Key, SecurityAlgorithms.HmacSha256Signature);
         }
-
     }
 }
