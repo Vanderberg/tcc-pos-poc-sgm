@@ -1,4 +1,4 @@
-namespace SGM.Auth.Domain.Security
+﻿namespace SGM.Shared.Domain.Security
 {
     public class TokenConfigurations
     {

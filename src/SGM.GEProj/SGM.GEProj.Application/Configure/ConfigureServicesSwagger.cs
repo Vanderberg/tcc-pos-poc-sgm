@@ -1,10 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace SGM.Auth.Application.Configure
+namespace SGM.GEProj.Application.Configure
 {
     public class ConfigureServicesSwagger
     {
@@ -15,7 +14,7 @@ namespace SGM.Auth.Application.Configure
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Sistema de Gestão Municipal (SGM.Auth)",
+                    Title = "Sistema de Gestão Municipal (SGM.GEProj)",
                     Description = "TCC - Arquitetura de Software Distribuído - PUC Minas Virtual",
                     TermsOfService = new Uri("https://github.com/Vanderberg/tcc-pos-poc-sgm"),
                     Contact = new OpenApiContact
@@ -40,15 +39,15 @@ namespace SGM.Auth.Application.Configure
                 });
                 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-                     {
-                         new OpenApiSecurityScheme {
-                             Reference = new OpenApiReference {
-                                 Id = "Bearer",
-                                 Type = ReferenceType.SecurityScheme
-                             }
-                         }, new List<string>()
-                     }
-                     });
+                    {
+                        new OpenApiSecurityScheme {
+                            Reference = new OpenApiReference {
+                                Id = "Bearer",
+                                Type = ReferenceType.SecurityScheme
+                            }
+                        }, new List<string>()
+                    }
+                });
             });
         }
     }

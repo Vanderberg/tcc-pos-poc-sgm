@@ -8,9 +8,9 @@ using System.Security.Principal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SGM.Auth.Domain.Repository;
-using SGM.Auth.Domain.Security;
+
 using System;
-using SGM.Shared.Domain.Entities.Enums;
+using SGM.Shared.Domain.Security;
 
 namespace SGM.Auth.Service.Services
 {

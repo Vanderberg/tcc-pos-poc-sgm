@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SGM.Auth.Domain.Dtos;
 using SGM.Auth.Domain.Interfaces.Services.User;
-using Microsoft.AspNetCore.Authorization;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace SGM.Auth.Application.Controllers
 {
@@ -43,6 +44,14 @@ namespace SGM.Auth.Application.Controllers
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
+        }
+        
+        [Authorize("Bearer")]
+        //[Authorize(Role.ADMIN, Role.MONITOR, Role.USER_COMMON, Role.MAINTENANCE)]
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            return  StatusCode(200, "Teste OK");
         }
     }
 }

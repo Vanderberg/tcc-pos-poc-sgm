@@ -1,14 +1,14 @@
-using System;
+﻿using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using SGM.Auth.Domain.Security;
+using SGM.Shared.Domain.Security;
 
-namespace SGM.Auth.Application.Configure
+namespace SGM.Shared.Domain.Configure
 {
-    public class ConfigureServicesJWT
+public class ConfigureServicesJWT
     {
         public static void ConfiureToken(IServiceCollection services, IConfiguration configuration)
         {
@@ -21,7 +21,7 @@ namespace SGM.Auth.Application.Configure
                      .Configure(tokenConfigurations);
             services.AddSingleton(tokenConfigurations);
 
-            /* services.AddAuthentication(authOptions =>
+            services.AddAuthentication(authOptions =>
              {
                  authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                  authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -52,16 +52,6 @@ namespace SGM.Auth.Application.Configure
                      .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
                      .RequireAuthenticatedUser().Build());
              });
-
-
-
-             /*                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                             {
-                                 Description = "Entre com o Token JWT",
-                                 Name = "Authorization",
-                                 In = ParameterLocation.Header,
-                                 Type = SecuritySchemeType.ApiKey
-                             }); */
         }
     }
 }

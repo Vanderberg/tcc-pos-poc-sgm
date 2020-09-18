@@ -4,6 +4,7 @@
     <ProjectReference Include="..\SGM.Cidadao.Domain\SGM.Cidadao.Domain.csproj" />
     <ProjectReference Include="..\SGM.Cidadao.Service\SGM.Cidadao.Service.csproj" />
     <ProjectReference Include="..\SGM.Cidadao.CrossCutting\SGM.Cidadao.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\SGM.Auth\SGM.Auth.Domain\SGM.Auth.Domain.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

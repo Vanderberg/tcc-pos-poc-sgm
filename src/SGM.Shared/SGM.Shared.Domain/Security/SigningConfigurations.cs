@@ -1,9 +1,9 @@
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
+using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace SGM.Auth.Domain.Security
+namespace SGM.Shared.Domain.Security
 {
-
     public class SigningConfigurations
     {
         public SecurityKey Key { get; set; }

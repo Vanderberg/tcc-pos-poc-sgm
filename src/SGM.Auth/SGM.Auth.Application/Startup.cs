@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SGM.Auth.Application.Configure;
 using SGM.Auth.CrossCutting.DependencyInjection;
+using SGM.Shared.Domain.Configure;
 
 namespace SGM.Auth.Application
 {
@@ -40,8 +41,6 @@ namespace SGM.Auth.Application
 
             configureSeed.Seed();
 
-            //app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseSwagger();
             
@@ -50,6 +49,7 @@ namespace SGM.Auth.Application
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sistema de Gestão Municipal (SGM.Auth)");
                 c.RoutePrefix = string.Empty;
             });
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
