@@ -24,5 +24,11 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\PoliticaPublicaController.cs" />
+    <Compile Remove="Configure\ConfigureServicesSwagger.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Configure" />
   </ItemGroup>
 </Project>

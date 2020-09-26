@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using SGM.Auth.Application.Configure;
 using SGM.Auth.CrossCutting.DependencyInjection;
 using SGM.Shared.Domain.Configure;
 
@@ -27,7 +26,7 @@ namespace SGM.Auth.Application
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services, Configuration);
             ConfigureServicesJWT.ConfiureToken(services, Configuration);
-            ConfigureServicesSwagger.ConfigureSwagger(services);
+            ConfigureServicesSwagger.ConfigureSwagger(services, "SGM.Auth");
             services.AddControllers();
         }
 

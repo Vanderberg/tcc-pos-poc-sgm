@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace SGM.Cidadao.Application.Configure
+namespace SGM.Shared.Domain.Configure
 {
     public class ConfigureServicesSwagger
     {

@@ -7,8 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-
-using SGM.Cidadao.Application.Configure;
 using SGM.Cidadao.CrossCutting.DependencyInjection;
 using SGM.Shared.Domain.Configure;
 
@@ -30,7 +28,7 @@ namespace SGM.Cidadao.Application
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services, Configuration);
             ConfigureServicesJWT.ConfiureToken(services, Configuration);
-            ConfigureServicesSwagger.ConfigureSwagger(services);
+            ConfigureServicesSwagger.ConfigureSwagger(services, "SGM.Cidadao");
             
             services.AddControllers();
         }
@@ -50,7 +48,7 @@ namespace SGM.Cidadao.Application
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sistema de Gestão Municipal (SGM.Cidadao)");
-                c.RoutePrefix = string.Empty;
+                c.RoutePrefix = "Auth";
             });
             
             app.UseAuthorization();
