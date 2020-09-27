@@ -20,15 +20,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
   </ItemGroup>
-
-
-  <ItemGroup>
-    <Compile Remove="Controllers\PoliticaPublicaController.cs" />
-    <Compile Remove="Configure\ConfigureServicesSwagger.cs" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Configure" />
-  </ItemGroup>
 </Project>

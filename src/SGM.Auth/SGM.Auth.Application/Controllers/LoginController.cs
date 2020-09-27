@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace SGM.Auth.Application.Controllers
 {
     [ApiController]
-    [Route("auth/[controller]")]
+    [Route("autenticacao/[controller]")]
     public class LoginController : ControllerBase
     {
         [AllowAnonymous]
