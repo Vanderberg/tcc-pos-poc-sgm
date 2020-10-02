@@ -20,8 +20,7 @@ namespace SGM.Cidadao.Application.Controllers
             _service = service;
         }
         
-        //[Authorize("Bearer")]
-        [AllowAnonymous]
+        [Authorize("Bearer")]
         [HttpGet]
         public async Task<ActionResult> Get()
         {
