@@ -21,7 +21,8 @@ namespace SGM.Cidadao.Data.Mapping
             builder.Property(p => p.OrcamentoPrevisto)
                 .IsRequired();
             builder.Property(p => p.NomeResponsavel)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(60);
 
         } 
     }

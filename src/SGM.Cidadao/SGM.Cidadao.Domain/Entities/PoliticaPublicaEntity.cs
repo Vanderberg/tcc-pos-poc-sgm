@@ -16,4 +16,4 @@ namespace SGM.Cidadao.Domain.Entities
         public DateTime DataPrevista { get; set; }
         public DateTime DataRealizada { get; set; }    
     }
-}
+} 

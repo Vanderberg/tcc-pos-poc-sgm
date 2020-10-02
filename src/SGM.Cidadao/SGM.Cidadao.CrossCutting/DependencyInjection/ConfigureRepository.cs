@@ -15,6 +15,8 @@ namespace SGM.Cidadao.CrossCutting.DependencyInjection
         {
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             serviceCollection.AddScoped<IPoliticaPublicaRepository, PoliticaPublicaImplementation>();
+            serviceCollection.AddScoped<ICampanhaRepository, CampanhaImplementation>();
+            serviceCollection.AddScoped<IVotacaoRepository, VotacaoImplementation>();
             
             serviceCollection.AddScoped<ConfigureSeed>();
 

@@ -4,23 +4,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SGM.Cidadao.Domain.Entities;
-using SGM.Cidadao.Domain.Interfaces.Services.PoliticaPublica;
-using SGM.Shared.Domain.Entities.Enums;
+using SGM.Cidadao.Domain.Interfaces.Services.Campanha;
 
 namespace SGM.Cidadao.Application.Controllers
 {
     [ApiController]
     [Route("cidadao/[controller]")]
-    public class PoliticaPublicaController : ControllerBase
+    public class CampanhaController : ControllerBase
     {
-        public IPoliticaPublicaService _service { get; set; }
+        public ICampanhaService _service { get; set; }
 
-        public PoliticaPublicaController(IPoliticaPublicaService service)
+        public CampanhaController(ICampanhaService service)
         {
             _service = service;
         }
-       
-        [Authorize("Bearer")]
+
+        //[Authorize("Bearer")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult> Get()
         {
@@ -37,11 +37,11 @@ namespace SGM.Cidadao.Application.Controllers
             {
                 return StatusCode((int) HttpStatusCode.InternalServerError, e.Message);
             }
-        }
+        }   
         
         [Authorize("Bearer")]       
         [HttpGet]
-        [Route("{id}", Name = "GetPoliticaId")]
+        [Route("{id}", Name = "GetCampanhaId")]
         public async Task<ActionResult> Get(Guid id)
         {
             if (!ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace SGM.Cidadao.Application.Controllers
         
         [Authorize("Bearer")]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] PoliticaPublicaEntity politica)
+        public async Task<ActionResult> Post([FromBody] CampanhaEntity campanha)
         {
             if (!ModelState.IsValid)
             {
@@ -70,10 +70,10 @@ namespace SGM.Cidadao.Application.Controllers
 
             try
             {
-                var result = await _service.Post(politica);
+                var result = await _service.Post(campanha);
                 if (result != null)
                 {
-                    return Created(new Uri(Url.Link("GetWithId", new { id = result.Id })), result);
+                    return Created(new Uri(Url.Link("GetCampanhaId", new { id = result.Id })), result);
                 }
                 else
                 {
@@ -89,7 +89,7 @@ namespace SGM.Cidadao.Application.Controllers
         
         [Authorize("Bearer")]
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] PoliticaPublicaEntity politica)
+        public async Task<ActionResult> Put([FromBody] CampanhaEntity campanha)
         {
             if (!ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace SGM.Cidadao.Application.Controllers
 
             try
             {
-                var result = await _service.Put(politica);
+                var result = await _service.Put(campanha);
                 if (result != null)
                 {
                     return Ok(result);

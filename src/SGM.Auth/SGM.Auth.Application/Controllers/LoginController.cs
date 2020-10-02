@@ -29,7 +29,7 @@ namespace SGM.Auth.Application.Controllers
 
             try
             {
-                var result = await service.FindByLogin(loginDto);
+                var result = await service.FindByLogin(loginDto); //await service.FindByLogin(loginDto);
                 if (result != null)
                 {
                     return Ok(result);
@@ -44,14 +44,6 @@ namespace SGM.Auth.Application.Controllers
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
-        }
-        
-        [Authorize("Bearer")]
-        //[Authorize(Role.ADMIN, Role.MONITOR, Role.USER_COMMON, Role.MAINTENANCE)]
-        [HttpGet]
-        public async Task<ActionResult> Get()
-        {
-            return  StatusCode(200, "Teste OK");
         }
     }
 }
