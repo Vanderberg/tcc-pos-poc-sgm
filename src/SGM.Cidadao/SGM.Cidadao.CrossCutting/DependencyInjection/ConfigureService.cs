@@ -13,6 +13,7 @@ namespace SGM.Cidadao.CrossCutting.DependencyInjection
             serviceCollection.AddTransient<IPoliticaPublicaService, PoliticaPublicaService>();
             serviceCollection.AddTransient<ICampanhaService, CampanhaService>();
             serviceCollection.AddTransient<IVotacaoService, VotacaoService>();
+            serviceCollection.AddTransient<IVotarService, VotarService>();
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using SGM.Cidadao.CrossCutting.DependencyInjection;
+using SGM.Cidadao.CrossCutting.Mappings;
 using SGM.Shared.Domain.Configure;
 
 
@@ -29,6 +31,17 @@ namespace SGM.Cidadao.Application
             ConfigureRepository.ConfigureDependenciesRepository(services, Configuration);
             ConfigureServicesJWT.ConfiureToken(services, Configuration);
             ConfigureServicesSwagger.ConfigureSwagger(services, "SGM.Cidadao");
+            
+            
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                //cfg.AddProfile(new DtoToModelProfile());
+                cfg.AddProfile(new EntityToDtoProfile());
+               // cfg.AddProfile(new ModelToEntityProfile());
+            });
+
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
             
             services.AddControllers();
         }

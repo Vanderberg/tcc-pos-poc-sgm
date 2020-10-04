@@ -5,8 +5,8 @@ using SGM.Shared.Domain.Interfaces;
 
 namespace SGM.Cidadao.Domain.Repository
 {
-    public interface IVotacaoRepository : IRepository<VotacaoEntity>
+    public interface IVotarRepository : IRepository<VotacaoEntity>
     {
-        Task<VotacaoEntity> FindBy(Guid guid);
+        Task<VotacaoEntity> Votar(Guid id); 
     }
 }

@@ -4,7 +4,7 @@ using SGM.Cidadao.Domain.Entities.Enums;
 
 namespace SGM.Cidadao.Domain.Dtos
 {
-    public class PoliticaPublicaDto
+    public class PoliticaPublicaDtoCreate
     {
         [Required(ErrorMessage = "Título é campo obrigatório.")]
         [StringLength(60, ErrorMessage = "Título deve ter no máximo {1} caracteres")]

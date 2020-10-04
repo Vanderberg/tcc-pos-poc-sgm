@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SGM.Cidadao.Domain.Dtos;
 using SGM.Cidadao.Domain.Entities;
 using SGM.Cidadao.Domain.Interfaces.Services.Campanha;
 
@@ -60,7 +61,7 @@ namespace SGM.Cidadao.Application.Controllers
         
         [Authorize("Bearer")]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CampanhaEntity campanha)
+        public async Task<ActionResult> Post([FromBody] CampanhaDtoCreate campanha)
         {
             if (!ModelState.IsValid)
             {
@@ -88,7 +89,7 @@ namespace SGM.Cidadao.Application.Controllers
         
         [Authorize("Bearer")]
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] CampanhaEntity campanha)
+        public async Task<ActionResult> Put([FromBody] CampanhaDtoUpdate campanha)
         {
             if (!ModelState.IsValid)
             {

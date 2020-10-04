@@ -8,17 +8,16 @@ using SGM.Cidadao.Domain.Repository;
 
 namespace SGM.Cidadao.Data.Implementations
 {
-    
-    public class VotacaoImplementation : BaseRepository<VotacaoEntity>, IVotacaoRepository
+    public class VotarImplementation : BaseRepository<VotacaoEntity>, IVotarRepository
     {
         private DbSet<VotacaoEntity> _dataset;
         
-        public VotacaoImplementation(SgmContextCidadao context) : base(context)
+        public VotarImplementation(SgmContextCidadao context) : base(context)
         {
             _dataset = context.Set<VotacaoEntity>();
         }
 
-        public Task<VotacaoEntity> FindBy(Guid guid)
+        public Task<VotacaoEntity> Votar(Guid id)
         {
             throw new NotImplementedException();
         }

@@ -5,16 +5,19 @@ using SGM.Shared.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using SGM.Cidadao.Domain.Dtos;
 
 namespace SGM.Cidadao.Service.Services
 {
     public class PoliticaPublicaService : IPoliticaPublicaService
     {
         private IRepository<PoliticaPublicaEntity> _repository;
-
-        public PoliticaPublicaService(IRepository<PoliticaPublicaEntity> repository)
+        private readonly IMapper _mapper;
+        public PoliticaPublicaService(IRepository<PoliticaPublicaEntity> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<bool> Delete(Guid id)
@@ -36,20 +39,16 @@ namespace SGM.Cidadao.Service.Services
             //return _mapper.Map<IEnumerable<PoliticaPublicaEntity>>(listentity);
         }
 
-        public async Task<PoliticaPublicaEntity> Post(PoliticaPublicaEntity politica)
+        public async Task<PoliticaPublicaEntity> Post(PoliticaPublicaDtoCreate politica)
         {
-            return await _repository.InsertAsync(politica);
-            //var entity = _mapper.Map<PoliticaPublicaEntity>(politica);
-            //var result = await _repository.InsertAsync(entity);
-            //return _mapper.Map<PoliticaPublicaEntity>(result);
+            var entity = _mapper.Map<PoliticaPublicaEntity>(politica);
+            return await _repository.InsertAsync(entity);
         }
 
-        public async Task<PoliticaPublicaEntity> Put(PoliticaPublicaEntity politica)
+        public async Task<PoliticaPublicaEntity> Put(PoliticaPublicaDtoUpdate politica)
         {
-            return await _repository.UpdateAsync(politica);
-            //var entity = _mapper.Map<PoliticaPublicaEntity>(politica);
-            //var result = await _repository.UpdateAsync(entity);
-            //return _mapper.Map<PoliticaPublicaEntity>(result);
+            var entity = _mapper.Map<PoliticaPublicaEntity>(politica);
+            return await _repository.UpdateAsync(entity);
         }
     }
 }

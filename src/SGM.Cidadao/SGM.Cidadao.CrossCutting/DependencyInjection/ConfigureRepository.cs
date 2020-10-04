@@ -14,10 +14,11 @@ namespace SGM.Cidadao.CrossCutting.DependencyInjection
         public static void ConfigureDependenciesRepository(IServiceCollection serviceCollection, IConfiguration configuration)
         {
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-            serviceCollection.AddScoped<IPoliticaPublicaRepository, PoliticaPublicaImplementation>();
+/*            serviceCollection.AddScoped<IPoliticaPublicaRepository, PoliticaPublicaImplementation>();
             serviceCollection.AddScoped<ICampanhaRepository, CampanhaImplementation>();
             serviceCollection.AddScoped<IVotacaoRepository, VotacaoImplementation>();
-            
+            serviceCollection.AddScoped<IVotarRepository, VotarImplementation>();
+   */         
             serviceCollection.AddScoped<ConfigureSeed>();
 
             serviceCollection.AddDbContext<SgmContextCidadao>(
