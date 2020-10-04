@@ -41,3 +41,10 @@ services:
     build:
       context: .
       dockerfile: SGM.Auth/SGM.Auth.Application/Dockerfile  
+
+  sgm.cidadao.application:
+    container_name: sgm.cidadao
+    image: ${DOCKER_REGISTRY-}sgm.cidadao
+    build:
+      context: .
+      dockerfile: SGM.Cidadao/SGM.Cidadao.Application/Dockerfile      

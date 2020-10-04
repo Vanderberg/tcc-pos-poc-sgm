@@ -23,8 +23,8 @@ namespace SGM.Cidadao.CrossCutting.DependencyInjection
 
             serviceCollection.AddDbContext<SgmContextCidadao>(
                 
-                options => options.UseMySql("server=localhost;userid=root;password=456852;database=SGM_CIDADAO")
-                //options => options.UseMySql(configuration.GetConnectionString("InputsContext"))
+                //options => options.UseMySql("server=localhost;userid=root;password=456852;database=SGM_CIDADAO")
+                options => options.UseMySql(configuration.GetConnectionString("InputsContext"))
             );
         }
     }
