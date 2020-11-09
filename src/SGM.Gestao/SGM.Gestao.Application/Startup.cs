@@ -47,7 +47,7 @@ namespace SGM.Gestao.Application
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sistema de Gestão Municipal (SGM.Gestao)");
-                c.RoutePrefix = "Gestao";
+                c.RoutePrefix = "gestao/swagger";
             });
             app.UseAuthentication();
 
