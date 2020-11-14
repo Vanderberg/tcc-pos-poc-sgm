@@ -4,9 +4,9 @@ using SGM.Gestao.Domain.Entities;
 
 namespace SGM.Gestao.Data.Mapping
 {
-    public class ColaboradorMap : IEntityTypeConfiguration<ColaborardorEntity>
+    public class ColaboradorMap : IEntityTypeConfiguration<ColaboradorEntity>
     {
-        public void Configure(EntityTypeBuilder<ColaborardorEntity> builder)
+        public void Configure(EntityTypeBuilder<ColaboradorEntity> builder)
         {
             builder.ToTable("Colaborador");
             builder.HasKey(c => c.Id);

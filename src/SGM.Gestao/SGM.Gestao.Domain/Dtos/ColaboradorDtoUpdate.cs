@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SGM.Cidadao.Domain.Dtos
+namespace SGM.Gestao.Domain.Dtos
 {
-    public class VotacaoDtoUpdate : VotacaoDtoCreate
+    public class ColaboradorDtoUpdate : ColaboradorDtoCreate
     {
         [Required(ErrorMessage = "Id é campo obrigatório para alteração")]
         public Guid Id { get; set; }

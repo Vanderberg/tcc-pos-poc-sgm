@@ -1,24 +1,25 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SGM.Cidadao.Domain.Dtos;
-using SGM.Cidadao.Domain.Interfaces.Services.Campanha;
+using SGM.Gestao.Domain.Dtos;
+using SGM.Gestao.Domain.Interfaces.Services.Treinamento;
 
-namespace SGM.Cidadao.Application.Controllers
+namespace SGM.Gestao.Application.Controllers
 {
     [ApiController]
-    [Route("cidadao/[controller]")]
-    public class CampanhaController : ControllerBase
+    [Route("gestao/[controller]")]   
+    public class TreinamentoController : ControllerBase
     {
-        public ICampanhaService _service { get; set; }
 
-        public CampanhaController(ICampanhaService service)
+        public ITreinamentoService _service;
+
+        public TreinamentoController(ITreinamentoService service)
         {
             _service = service;
         }
-
+        
         [Authorize("Bearer")]
         [HttpGet]
         public async Task<ActionResult> Get()
@@ -36,11 +37,11 @@ namespace SGM.Cidadao.Application.Controllers
             {
                 return StatusCode((int) HttpStatusCode.InternalServerError, e.Message);
             }
-        }   
+        }  
         
         [Authorize("Bearer")]       
         [HttpGet]
-        [Route("{id}", Name = "GetCampanhaId")]
+        [Route("{id}", Name = "GetTreinamentoId")]
         public async Task<ActionResult> Get(Guid id)
         {
             if (!ModelState.IsValid)
@@ -60,7 +61,7 @@ namespace SGM.Cidadao.Application.Controllers
         
         [Authorize("Bearer")]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CampanhaDtoCreate campanha)
+        public async Task<ActionResult> Post([FromBody] TreinamentoDtoCreate treinamento)
         {
             if (!ModelState.IsValid)
             {
@@ -69,10 +70,10 @@ namespace SGM.Cidadao.Application.Controllers
 
             try
             {
-                var result = await _service.Post(campanha);
+                var result = await _service.Post(treinamento);
                 if (result != null)
                 {
-                    return Created(new Uri(Url.Link("GetCampanhaId", new { id = result.Id })), result);
+                    return Created(new Uri(Url.Link("GetTreinamentoId", new { id = result.Id })), result);
                 }
                 else
                 {
@@ -88,7 +89,7 @@ namespace SGM.Cidadao.Application.Controllers
         
         [Authorize("Bearer")]
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] CampanhaDtoUpdate campanha)
+        public async Task<ActionResult> Put([FromBody] TreinamentoDtoUpdate treinamento)
         {
             if (!ModelState.IsValid)
             {
@@ -97,7 +98,7 @@ namespace SGM.Cidadao.Application.Controllers
 
             try
             {
-                var result = await _service.Put(campanha);
+                var result = await _service.Put(treinamento);
                 if (result != null)
                 {
                     return Ok(result);

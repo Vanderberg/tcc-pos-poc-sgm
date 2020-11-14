@@ -6,6 +6,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\SGM.Shared\SGM.Shared.Domain\SGM.Shared.Domain.csproj" />
+      <ProjectReference Include="..\SGM.Gestao.CrossCutting\SGM.Gestao.CrossCutting.csproj" />
+      <ProjectReference Include="..\SGM.Gestao.Domain\SGM.Gestao.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -20,9 +22,5 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers" />
     </ItemGroup>
 </Project>

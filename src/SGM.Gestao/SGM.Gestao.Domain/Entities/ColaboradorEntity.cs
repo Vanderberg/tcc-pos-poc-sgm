@@ -3,7 +3,7 @@ using SGM.Shared.Domain.Entities;
 
 namespace SGM.Gestao.Domain.Entities
 {
-    public class ColaborardorEntity : BaseEntity
+    public class ColaboradorEntity : BaseEntity
     {
         public string Nome { get; set; }
         public string Sobrenome { get; set; }

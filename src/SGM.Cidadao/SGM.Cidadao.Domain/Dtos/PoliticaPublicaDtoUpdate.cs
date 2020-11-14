@@ -6,7 +6,7 @@ namespace SGM.Cidadao.Domain.Dtos
 {
     public class PoliticaPublicaDtoUpdate : PoliticaPublicaDtoCreate
     {
-        [Required(ErrorMessage = "Id é campo obrigarorio para alteração")]
+        [Required(ErrorMessage = "Id é campo obrigatório para alteração")]
         public Guid Id { get; set; }
     }
 }
