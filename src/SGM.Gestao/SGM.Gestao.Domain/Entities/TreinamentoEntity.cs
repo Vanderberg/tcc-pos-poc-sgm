@@ -12,5 +12,7 @@ namespace SGM.Gestao.Domain.Entities
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public Status Status { get; set; }
+        
+        
     }
 }
