@@ -21,3 +21,13 @@ services:
       - db
     networks:
       - rede_services        
+
+  sgm.gestao.application:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - 8002:80
+    depends_on:
+      - db
+    networks:
+      - rede_services 

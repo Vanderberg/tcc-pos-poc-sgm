@@ -20,9 +20,8 @@ namespace SGM.Gestao.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<ConfigureSeed>();
 
             serviceCollection.AddDbContext<SgmContextGestao>(
-                
-                options => options.UseMySql("server=localhost;userid=root;password=456852;database=SGM_GESTAO")
-                //options => options.UseMySql(configuration.GetConnectionString("InputsContext"))
+                //options => options.UseMySql("server=localhost;userid=root;password=456852;database=SGM_GESTAO")
+                options => options.UseMySql(configuration.GetConnectionString("InputsContext"))
             );
         }        
     }

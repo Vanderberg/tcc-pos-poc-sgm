@@ -48,3 +48,10 @@ services:
     build:
       context: .
       dockerfile: SGM.Cidadao/SGM.Cidadao.Application/Dockerfile      
+
+  sgm.gestao.application:
+    container_name: sgm.gestao
+    image: ${DOCKER_REGISTRY-}sgm.gestao
+    build:
+      context: .
+      dockerfile: SGM.Gestao/SGM.Gestao.Application/Dockerfile           
