@@ -9,7 +9,7 @@ using SGM.Cidadao.Domain.Interfaces.Services.Campanha;
 namespace SGM.Cidadao.Application.Controllers
 {
     [ApiController]
-    [Route("cidadao/[controller]")]
+    [Route("[controller]")]
     public class CampanhaController : ControllerBase
     {
         public ICampanhaService _service { get; set; }

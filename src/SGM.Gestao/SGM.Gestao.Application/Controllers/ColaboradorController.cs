@@ -9,7 +9,7 @@ using SGM.Gestao.Domain.Interfaces.Services.Colaborador;
 namespace SGM.Gestao.Application.Controllers
 {
     [ApiController]
-    [Route("gestao/[controller]")]    
+    [Route("[controller]")]    
     public class ColaboradorController : ControllerBase
     {
         public IColaboradorService _service { get; set; }

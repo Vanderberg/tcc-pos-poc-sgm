@@ -4,32 +4,25 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:21690",
-      "sslPort": 44331
+      "applicationUrl": "http://localhost:56752",
+      "sslPort": 44385
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "gestao/swagger",
+      "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "SGM.Gestao.Application": {
+    "SGM.Gateway.Application": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "gestao/swagger",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "Docker": {
-        "commandName": "Docker",
-        "launchBrowser": true,
-        "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/gestao/swagger",
-        "publishAllPorts": true
       }
     }
   }

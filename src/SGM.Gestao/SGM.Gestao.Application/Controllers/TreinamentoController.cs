@@ -9,7 +9,7 @@ using SGM.Gestao.Domain.Interfaces.Services.Treinamento;
 namespace SGM.Gestao.Application.Controllers
 {
     [ApiController]
-    [Route("gestao/[controller]")]   
+    [Route("[controller]")]   
     public class TreinamentoController : ControllerBase
     {
 

@@ -34,24 +34,64 @@ services:
       - db
     networks:
       - rede_services 
-
-  sgm.auth.application:
+      
+  authentication:
     container_name: sgm.auth
     image: ${DOCKER_REGISTRY-}sgm.auth
     build:
       context: .
-      dockerfile: SGM.Auth/SGM.Auth.Application/Dockerfile  
-
-  sgm.cidadao.application:
+      dockerfile: SGM.Auth/SGM.Auth.Application/Dockerfile 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "8000:80"
+    depends_on:
+      - admin_db   
+    networks:
+     - rede_services
+      
+  cidadao:
     container_name: sgm.cidadao
     image: ${DOCKER_REGISTRY-}sgm.cidadao
     build:
       context: .
-      dockerfile: SGM.Cidadao/SGM.Cidadao.Application/Dockerfile      
-
-  sgm.gestao.application:
+      dockerfile: SGM.Cidadao/SGM.Cidadao.Application/Dockerfile 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "8001:80"
+    depends_on:
+      - admin_db   
+    networks:
+      - rede_services
+      
+  gestao:
     container_name: sgm.gestao
     image: ${DOCKER_REGISTRY-}sgm.gestao
     build:
       context: .
-      dockerfile: SGM.Gestao/SGM.Gestao.Application/Dockerfile           
+      dockerfile: SGM.Gestao/SGM.Gestao.Application/Dockerfile 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "8002:80"
+    depends_on:
+      - admin_db   
+    networks:
+      - rede_services
+      
+  gateway:
+    container_name: sgm.gateway    
+    image: ${DOCKER_REGISTRY-}sgm.gateway
+    build:
+      context: .
+      dockerfile: SGM.Gateway/SGM.Gateway.Application/Dockerfile 
+    ports:
+      - "7000:80"
+    depends_on:
+      - authentication
+      - cidadao
+      - gestao
+    networks:
+      - rede_services              
+      

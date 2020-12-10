@@ -9,7 +9,7 @@ using SGM.Gestao.Domain.Interfaces.Services.Vaga;
 namespace SGM.Gestao.Application.Controllers
 {
     [ApiController]
-    [Route("gestao/[controller]")]    
+    [Route("[controller]")]    
     public class VagaController : ControllerBase
     {
         public IVagaService _service { get; set; }

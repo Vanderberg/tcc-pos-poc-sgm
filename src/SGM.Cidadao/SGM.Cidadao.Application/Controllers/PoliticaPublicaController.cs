@@ -11,7 +11,7 @@ using SGM.Shared.Domain.Entities.Enums;
 namespace SGM.Cidadao.Application.Controllers
 {
     [ApiController]
-    [Route("cidadao/[controller]")]
+    [Route("[controller]")]
     public class PoliticaPublicaController : ControllerBase
     {
         public IPoliticaPublicaService _service { get; set; }

@@ -8,7 +8,7 @@ using SGM.Cidadao.Domain.Interfaces.Services.Votacao;
 namespace SGM.Cidadao.Application.Controllers
 {
     [ApiController]
-    [Route("cidadao/[controller]")]
+    [Route("[controller]")]
     public class VotarController : ControllerBase
     {
         public IVotarService _service { get; set; }

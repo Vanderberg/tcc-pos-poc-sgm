@@ -11,7 +11,7 @@ using SGM.Cidadao.Domain.Repository;
 namespace SGM.Cidadao.Application.Controllers
 {
     [ApiController]
-    [Route("cidadao/[controller]")]
+    [Route("[controller]")]
     public class VotacaoController : ControllerBase
     {
         public IVotacaoService _service { get; set; }
