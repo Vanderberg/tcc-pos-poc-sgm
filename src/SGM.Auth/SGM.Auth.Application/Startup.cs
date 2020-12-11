@@ -13,9 +13,23 @@ namespace SGM.Auth.Application
 {
     public class Startup
     {
+        private readonly string routePrefix;
+        private readonly string prefixUrl;
+        private readonly string basePath;        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
+            routePrefix = configuration.GetSection("ConfigApp").GetSection("routePrefix").Value;
+            prefixUrl = configuration.GetSection("ConfigApp").GetSection("prefixUrl").Value;
+            basePath = "";
+
+            if (!string.IsNullOrEmpty(this.prefixUrl))
+            {
+                string host = configuration.GetSection("ConfigApp").GetSection("swaggerHost").Value;
+                string port = configuration.GetSection("ConfigApp").GetSection("swaggerHostPort").Value;
+                basePath = $"http://{host}:{port}{prefixUrl}";
+            }
         }
 
         public IConfiguration Configuration { get; }
@@ -26,8 +40,9 @@ namespace SGM.Auth.Application
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services, Configuration);
             ConfigureServicesJWT.ConfiureToken(services, Configuration);
-            ConfigureServicesSwagger.ConfigureSwagger(services, "SGM.Auth");
             services.AddControllers();
+            
+            services.AddSwaggerDocumentation("SGM.Auth");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,15 +55,17 @@ namespace SGM.Auth.Application
 
             configureSeed.Seed();
 
-            app.UseRouting();
-            app.UseSwagger();
-            
-            app.UseSwaggerUI(c =>
+            app.UseSwagger(c =>
             {
-                c.SwaggerEndpoint("v1/swagger.json", "Sistema de Gestão Municipal (SGM.Auth)");
-                c.RoutePrefix = "swagger";
+                c.PreSerializeFilters.Add((swagger, httpReq) =>
+                {
+                    swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = string.IsNullOrEmpty(basePath) ? $"{httpReq.Scheme}://{httpReq.Host.Value}" : basePath } };
+                });
             });
+
+            app.UseSwaggerDocumentation("SGM.Auth v1.0", routePrefix, prefixUrl);
             
+            app.UseRouting();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

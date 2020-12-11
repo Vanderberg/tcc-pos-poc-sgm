@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using SGM.Cidadao.CrossCutting.DependencyInjection;
 using SGM.Cidadao.CrossCutting.Mappings;
 using SGM.Shared.Domain.Configure;
@@ -13,9 +15,24 @@ namespace SGM.Cidadao.Application
 {
     public class Startup
     {
+        private readonly string routePrefix;
+        private readonly string prefixUrl;
+        private readonly string basePath;  
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
+            routePrefix = configuration.GetSection("ConfigApp").GetSection("routePrefix").Value;
+            prefixUrl = configuration.GetSection("ConfigApp").GetSection("prefixUrl").Value;
+            basePath = "";
+
+            if (!string.IsNullOrEmpty(this.prefixUrl))
+            {
+                string host = configuration.GetSection("ConfigApp").GetSection("swaggerHost").Value;
+                string port = configuration.GetSection("ConfigApp").GetSection("swaggerHostPort").Value;
+                basePath = $"http://{host}:{port}{prefixUrl}";
+            }
         }
 
         public IConfiguration Configuration { get; }
@@ -26,9 +43,9 @@ namespace SGM.Cidadao.Application
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services, Configuration);
             ConfigureServicesJWT.ConfiureToken(services, Configuration);
-            ConfigureServicesSwagger.ConfigureSwagger(services, "SGM.Cidadao");
             
-            
+            services.AddSwaggerDocumentation("SGM.Cidadao");
+
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new EntityToDtoProfile());
@@ -49,14 +66,19 @@ namespace SGM.Cidadao.Application
             }
 
             configureSeed.Seed();
-            app.UseRouting();
-            app.UseSwagger();
-            
-            app.UseSwaggerUI(c =>
+   
+            app.UseSwagger(c =>
             {
-                c.SwaggerEndpoint("v1/swagger.json", "Sistema de Gestão Municipal (SGM.Cidadao)");
-                c.RoutePrefix = "swagger";
+                c.PreSerializeFilters.Add((swagger, httpReq) =>
+                {
+                    swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = string.IsNullOrEmpty(basePath) ? $"{httpReq.Scheme}://{httpReq.Host.Value}" : basePath } };
+                });
             });
+
+            app.UseSwaggerDocumentation("SGM.Cidadao v1.0", routePrefix, prefixUrl);
+
+            
+            app.UseRouting();
             
             app.UseAuthorization();
 

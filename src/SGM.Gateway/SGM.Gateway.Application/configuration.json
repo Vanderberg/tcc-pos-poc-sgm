@@ -23,32 +23,7 @@
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Options" ]
-    },
-
-    {
-      "DownstreamPathTemplate": "/",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "teste",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/test/",
-      "UpstreamHttpMethod": [ "Get", "Post", "Options" ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "teste",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/test/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Options" ]
-    },  
+    },     
     {
       "DownstreamPathTemplate": "/",
       "DownstreamScheme": "http",
