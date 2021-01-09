@@ -1,0 +1,43 @@
+@model IEnumerable<SGM.Web.Application.Models.Campanha>
+
+@{
+    ViewData["Title"] = "Modulo Cidadão";
+    ViewData["Subtitle"] = "Campanhas - Edit";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["subtitle"]</h4>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr class="success">
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataFim)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFim)
+            </td>
+        </tr>
+
+    }
+    </tbody>
+</table>

@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SGM.Auth.Domain.Dtos;
 using SGM.Auth.Domain.Interfaces.Services.User;
+using SGM.Shared.Domain.Dtos;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 

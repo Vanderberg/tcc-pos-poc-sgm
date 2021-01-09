@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using SGM.Auth.Domain.Dtos;
+using SGM.Shared.Domain.Dtos;
 using SGM.Shared.Domain.Entities;
 using SGM.Auth.Domain.Interfaces.Services.User;
 using System.IdentityModel.Tokens.Jwt;
