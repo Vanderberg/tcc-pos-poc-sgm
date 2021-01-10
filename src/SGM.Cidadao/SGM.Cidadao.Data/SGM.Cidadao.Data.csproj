@@ -20,10 +20,6 @@
     <ItemGroup>
       <ProjectReference Include="..\..\SGM.Shared\SGM.Shared.Domain\SGM.Shared.Domain.csproj" />
       <ProjectReference Include="..\SGM.Cidadao.Domain\SGM.Cidadao.Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Migrations" />
     </ItemGroup>    
 
 </Project>

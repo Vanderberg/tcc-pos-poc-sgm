@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SGM.Gestao.Data.Migrations
 {
-    public partial class First : Migration
+    public partial class One : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

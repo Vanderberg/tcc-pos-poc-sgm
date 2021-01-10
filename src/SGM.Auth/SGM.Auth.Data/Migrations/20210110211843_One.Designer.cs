@@ -2,66 +2,22 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SGM.Auth.Data.Context;
 
 namespace SGM.Auth.Data.Migrations
 {
     [DbContext(typeof(SgmContext))]
-    partial class SgmContextModelSnapshot : ModelSnapshot
+    [Migration("20210110211843_One")]
+    partial class One
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("SGM.Cidadao.Domain.Entities.PoliticaPublica", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("CreateAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DataPrevista")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DataRealizada")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("varchar(1000) CHARACTER SET utf8mb4")
-                        .HasMaxLength(1000);
-
-                    b.Property<int>("DescricaoArea")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NomeResponsavel")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<double>("OrcamentoPrevisto")
-                        .HasColumnType("double");
-
-                    b.Property<double>("OrcamentoRealizado")
-                        .HasColumnType("double");
-
-                    b.Property<string>("Titulo")
-                        .IsRequired()
-                        .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
-                        .HasMaxLength(60);
-
-                    b.Property<DateTime?>("UpdateAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PoliticaPublica");
-                });
 
             modelBuilder.Entity("SGM.Shared.Domain.Entities.UserEntity", b =>
                 {
@@ -71,6 +27,11 @@ namespace SGM.Auth.Data.Migrations
 
                     b.Property<int>("AcessLevel")
                         .HasColumnType("int");
+
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("varchar(11) CHARACTER SET utf8mb4")
+                        .HasMaxLength(11);
 
                     b.Property<DateTime?>("CreateAt")
                         .HasColumnType("datetime(6)");
@@ -83,6 +44,9 @@ namespace SGM.Auth.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
                         .HasMaxLength(60);
+
+                    b.Property<bool>("IsAuthenticated")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("LastName")
                         .IsRequired()

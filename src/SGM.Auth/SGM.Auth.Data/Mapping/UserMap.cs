@@ -18,6 +18,9 @@ namespace SGM.Auth.Data.Mapping
             builder.Property(u => u.LastName)
                 .IsRequired()
                 .HasMaxLength(60);
+            builder.Property(u => u.CPF)
+                .IsRequired()
+                .HasMaxLength(11);            
             builder.Property(u => u.Password)
                 .IsRequired();
             builder.Property(u => u.Email)

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SGM.Auth.Data.Migrations
 {
-    public partial class first : Migration
+    public partial class One : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,9 +16,11 @@ namespace SGM.Auth.Data.Migrations
                     UpdateAt = table.Column<DateTime>(nullable: true),
                     FirstName = table.Column<string>(maxLength: 60, nullable: false),
                     LastName = table.Column<string>(maxLength: 60, nullable: false),
+                    CPF = table.Column<string>(maxLength: 11, nullable: false),
                     Password = table.Column<string>(nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: true),
-                    AcessLevel = table.Column<int>(nullable: false)
+                    AcessLevel = table.Column<int>(nullable: false),
+                    IsAuthenticated = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

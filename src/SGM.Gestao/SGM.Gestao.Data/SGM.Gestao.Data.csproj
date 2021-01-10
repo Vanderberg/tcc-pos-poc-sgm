@@ -19,10 +19,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SGM.Gestao.Domain\SGM.Gestao.Domain.csproj" />
-    </ItemGroup>    
-
-    <ItemGroup>
-      <Folder Include="Migrations" />
     </ItemGroup>
 
 </Project>

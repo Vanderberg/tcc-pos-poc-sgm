@@ -34,26 +34,19 @@ namespace SGM.Auth.Service.Services
         public async Task<object> FindByLogin(LoginDto user)
         {
             var baseUser = new UserEntity();
-            if (user != null && !string.IsNullOrWhiteSpace(user.Email))
+            
+            if (user != null && !string.IsNullOrWhiteSpace(user.CPF))
             {
-                baseUser = await _repository.FindByLogin(user.Email);
+                baseUser = await _repository.FindByLogin(user.CPF);
 
-                if (baseUser == null)
-                {
-                    return new
-                    {
-                        authenticated = false,
-                        message = "Falha ao autenticar"
-                    };
-                }
-                else
+                if (baseUser.Password.Equals(user.Password))
                 {
                     ClaimsIdentity identity = new ClaimsIdentity(
-                        new GenericIdentity(user.Email),
+                        new GenericIdentity(user.CPF),
                         new[]
                         {
-                             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()), //jti o Id do token
-                             new Claim(JwtRegisteredClaimNames.UniqueName, user.Email),
+                            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()), //jti o Id do token
+                            new Claim(JwtRegisteredClaimNames.UniqueName, user.CPF),
                         }
                     );
 
@@ -63,6 +56,14 @@ namespace SGM.Auth.Service.Services
                     var handler = new JwtSecurityTokenHandler();
                     string token = CreateToken(identity, createDate, expirationDate, handler);
                     return SuccessObject(createDate, expirationDate, token, baseUser);
+                }
+                else
+                {
+                    return new
+                    {
+                        authenticated = false,
+                        message = "Falha ao autenticar"
+                    };
                 }
             }
             else

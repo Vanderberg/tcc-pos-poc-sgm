@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SGM.Cidadao.Data.Migrations
 {
-    public partial class two : Migration
+    public partial class One : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

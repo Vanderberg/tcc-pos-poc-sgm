@@ -9,8 +9,8 @@ using SGM.Gestao.Data.Context;
 namespace SGM.Gestao.Data.Migrations
 {
     [DbContext(typeof(SgmContextGestao))]
-    [Migration("20201115222359_First")]
-    partial class First
+    [Migration("20210110213229_One")]
+    partial class One
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

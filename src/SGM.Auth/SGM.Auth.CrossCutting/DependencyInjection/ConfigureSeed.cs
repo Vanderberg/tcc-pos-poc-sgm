@@ -31,6 +31,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
                 FirstName = "Alberto",
                 LastName = "Roberto",
                 Password = "admin",
+                CPF = "42888485044",
                 AcessLevel = Role.ADMIN,
                 CreateAt = DateTime.UtcNow
             };
@@ -42,6 +43,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
                 FirstName = "Vanessa",
                 LastName = "Roberts",
                 Password = "monitor",
+                CPF = "52012291074",
                 AcessLevel = Role.MONITOR,
                 CreateAt = DateTime.UtcNow
             };
@@ -53,6 +55,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
                 FirstName = "João",
                 LastName = "da Silva",
                 Password = "user",
+                CPF = "20482759070",
                 AcessLevel = Role.USER_COMMON,
                 CreateAt = DateTime.UtcNow
             };
@@ -64,6 +67,7 @@ namespace SGM.Auth.CrossCutting.DependencyInjection
                 FirstName = "Marcos",
                 LastName = "Daniel",
                 Password = "manutencao",
+                CPF = "31508734011",
                 AcessLevel = Role.MAINTENANCE,
                 CreateAt = DateTime.UtcNow
             };
