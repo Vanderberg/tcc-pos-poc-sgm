@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,10 +10,10 @@ namespace SGM.Web.Application.Services
         string GetUrl();
 
         void SetToken(string token);
-        
-        Task<IEnumerable<T>> FindAllAsync(string recurso = "");
 
-        Task<T> FindByIdAsync(int id, string recurso = "");
+        Task<IEnumerable<T>> FindAllAsync(string recurso = "");
+        
+        Task<T> FindByIdAsync(Guid id, string recurso = "");
 
         Task<T> CompleteFindByIdAsync(int id);
 

@@ -31,8 +31,6 @@ namespace SGM.Web.Application
             });
 
             services.AddControllersWithViews();
-
-            ConfigureServicesJWT.ConfiureToken(services, Configuration);
             
             services.AddScoped<CampanhasService>();
             services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
@@ -56,8 +54,6 @@ namespace SGM.Web.Application
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
-
-            //app.AddTokenInRequest();
 
             app.UseSession();
             app.UseCookiePolicy();

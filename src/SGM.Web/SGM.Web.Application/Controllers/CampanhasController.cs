@@ -17,8 +17,6 @@ namespace SGM.Web.Application.Controllers
        
         private readonly IConfiguration _configuration;
         private readonly IGenericService<Campanha> _campanhaService;
-        protected readonly HttpClient _clientHttp;
-
 
         public CampanhasController(IConfiguration config, IGenericService<Campanha> campanhaService )
         {
@@ -27,6 +25,11 @@ namespace SGM.Web.Application.Controllers
             Prepare();
         }
 
+        public override void SetToken(string token)
+        {
+            this._campanhaService.SetToken(token);
+        }
+        
         protected override void Prepare()
         {
             string host = this._configuration.GetSection("ConfigApp").GetSection("host").Value;
@@ -34,11 +37,6 @@ namespace SGM.Web.Application.Controllers
             this._campanhaService.SetUrl($"http://{host}:{port}/cidadao/campanha");
         }
         
-        public override void SetToken(string token)
-        {
-            this._campanhaService.SetToken(token);
-        }
-
         // GET
         public async Task<IActionResult> Index()
         {

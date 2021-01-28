@@ -21,7 +21,7 @@ namespace SGM.Cidadao.Application.Controllers
             _service = service;
         }
        
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         [HttpGet]
         public async Task<ActionResult> Get()
         {
@@ -40,7 +40,7 @@ namespace SGM.Cidadao.Application.Controllers
             }
         }
         
-        [Authorize("Bearer")]       
+        //[Authorize("Bearer")]       
         [HttpGet]
         [Route("{id}", Name = "GetPoliticaId")]
         public async Task<ActionResult> Get(Guid id)

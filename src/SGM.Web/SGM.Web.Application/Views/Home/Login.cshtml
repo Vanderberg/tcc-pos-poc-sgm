@@ -1,0 +1,53 @@
+@model SGM.Shared.Domain.Entities.UserEntity;
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutOFF";
+}
+
+<div style="padding-top:50px;">
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-8 col-md-6">
+                <div>
+                    @using (Html.BeginForm("LoginUser", "Home", FormMethod.Post, new { role = "form" }))
+                    {
+                        <div>
+                            @Html.AntiForgeryToken()
+                            <div>
+                                <label>CPF</label><br />
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.CPF, "{000.000.000-00}",new { @class = "form-control txtbox", placeholder = "000.000.000-00", data_tipo = "cpf"  })
+                            </div>
+                            <div style="padding-top:20px;"></div>
+                            <div>
+                                <label>Password</label><br />
+                            </div>
+                            <div>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control txtbox" })
+                            </div>
+                        </div>
+                        <div>
+                            <div style="padding-top:20px;">
+                                <input class="btn btn-primary btn-lg rph-login-button" type="submit" value="Login" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-8 col-md-6">
+            <div style="padding-top:20px;">
+                <div style="padding-top:10px;">
+                    <ui style="list-style: none;">
+                        <li>42888485044 - admin - Alberto Roberto</li>
+                        <li>52012291074 - monitor - Vanessa Roberts</li>
+                        <li>20482759070 - user - João da Silva</li>
+                        <li>31508734011 - manutencao - Marcos Daniel</li>
+                    </ui>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/site.js" asp-append-version="true"></script>

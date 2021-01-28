@@ -2,3 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+$(function () {
+    $("input[data-tipo='cpf']").mask("000.000.000-00");
+});

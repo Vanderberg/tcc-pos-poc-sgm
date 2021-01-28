@@ -15,6 +15,8 @@ namespace SGM.Web.Application.Services
         protected readonly HttpClient _clientHttp;
         public string _url { get; set; }
         public string _token { get; set; }
+        
+        public bool _IsAuthenticated { get; set; }
 
         public GenericService(ILogger<GenericService<T>> logger)
         {
@@ -39,7 +41,7 @@ namespace SGM.Web.Application.Services
                 this._clientHttp.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", this._token);
             }
         }
-        
+
         public async Task<IEnumerable<T>> FindAllAsync(string recurso = "")
         {            
             string url = String.IsNullOrEmpty(recurso) ? this._url : String.Concat(this._url, "/", recurso);
@@ -55,12 +57,12 @@ namespace SGM.Web.Application.Services
             return lista;
         }
 
-        public async Task<T> FindByIdAsync(int id, string recurso = "")
+        public async Task<T> FindByIdAsync(Guid id, string recurso = "")
         {
-            if (id == 0)
-            {
-                return default(T);
-            }
+            //if (id == null )
+            //{
+            //    return default(T);
+            //}
 
             string url = String.IsNullOrEmpty(recurso) ? this._url : String.Concat(this._url, "/", recurso);
 

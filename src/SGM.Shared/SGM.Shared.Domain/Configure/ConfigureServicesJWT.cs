@@ -33,6 +33,8 @@ public class ConfigureServicesJWT
                  paramsValidation.IssuerSigningKey = signingConfigurarions.Key;
                  paramsValidation.ValidAudience = tokenConfigurations.Audience;
                  paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
+                 paramsValidation.ValidateIssuer = true;
+                 paramsValidation.ValidateAudience = true;
 
                  // Valida a assinatura de um token recebido
                  paramsValidation.ValidateIssuerSigningKey = true;
