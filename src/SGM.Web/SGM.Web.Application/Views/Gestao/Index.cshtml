@@ -1,7 +1,7 @@
 @model IEnumerable<SGM.Web.Application.Models.Campanha>
 
 @{
-    ViewData["Title"] = "Modulo Cidadão";
+    ViewData["Title"] = "Modulo Gestão";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -9,25 +9,24 @@
 <div class="container overflow-hidden">
     <div class="row gy-5" align="center">
         <div class="col-6">
-            <a asp-controller="Campanhas" asp-action="Index">
-                <div class="p-3 border bg-light">Listar Campanhas </div>
+            <a asp-controller="Colaborador" asp-action="Index">
+                <div class="p-3 border bg-light">Listar Colaboradores </div>
             </a>
             <img/>
         </div>
 
         <div class="col-6">
-            <a asp-controller="PoliticaPublica" asp-action="Index">
-                <div class="p-3 border bg-light">Listar Politicas Publicas</div>
+            <a asp-controller="Treinamento" asp-action="Index">
+                <div class="p-3 border bg-light">Listar Treinamentos</div>
             </a>
         </div>
-        @*
         <div class="col-6">
-            <a asp-controller="Votacao" asp-action="Index">
-                <div class="p-3 border bg-light">Votação</div>
+            <a asp-controller="Vaga" asp-action="Index">
+                <div class="p-3 border bg-light">Vagas</div>
             </a>
         </div>
         <div class="col-6">
             <div class="p-3 border bg-light">Resultados</div>
-        </div>*@
+        </div>
     </div>
 </div>

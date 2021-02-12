@@ -21,7 +21,7 @@ namespace SGM.Cidadao.Application.Controllers
             _service = service;
         }
         
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         [HttpGet]
         public async Task<ActionResult> Get()
         {

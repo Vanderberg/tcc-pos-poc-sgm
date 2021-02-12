@@ -18,8 +18,10 @@ namespace SGM.Web.Application.Models
         [Display(Name = "Descrição área" )]
         public Area DescricaoArea { get; set; }
         [Display(Name = "Orçamento previsto" )]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double OrcamentoPrevisto { get; set; }
         [Display(Name = "Orçamento realizado" )]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double OrcamentoRealizado { get; set; }
         [Display(Name = "Nome responsável" )]
         public string NomeResponsavel { get; set; }

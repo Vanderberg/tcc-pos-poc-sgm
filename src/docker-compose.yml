@@ -2,6 +2,8 @@ version: '3.4'
 
 networks: 
   rede_services:
+  rede_gateway:
+  rede_web:    
 
 services:
 
@@ -79,6 +81,22 @@ services:
       - admin_db   
     networks:
       - rede_services
+
+  web:
+    container_name: sgm.web
+    image: ${DOCKER_REGISTRY-}sgm.web
+    build:
+      context: .
+      dockerfile: SGM.Web/SGM.Web.Application/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "81:80"
+    depends_on:
+      - gateway
+    networks:
+      - rede_web
+      - rede_gateway
       
   gateway:
     container_name: sgm.gateway    
@@ -93,5 +111,6 @@ services:
       - cidadao
       - gestao
     networks:
-      - rede_services              
+      - rede_gateway
+      - rede_services
       

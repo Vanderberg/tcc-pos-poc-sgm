@@ -1,25 +1,25 @@
-@model IEnumerable<SGM.Web.Application.Models.Campanha>
-
+@model IEnumerable<SGM.Web.Application.Models.Treinamento>
 @{
-    ViewData["Title"] = "Modulo Cidadão";
-    ViewData["Subtitle"] = "Campanhas";
+    ViewData["Title"] = "Modulo Gestão";
+    ViewData["Subtitle"] = "Treinamentos";
 }
 
 <h2>@ViewData["Title"]</h2>
 <h4>@ViewData["subtitle"]</h4>
-
-
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
 <table class="table table-striped table-hover">
     <thead>
     <tr class="success">
         <th>
-            @Html.DisplayNameFor(model => model.Descricao)
+            @Html.DisplayNameFor(model => model.Objetivo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataInicio)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataFim)
+            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th></th>
     </tr>
@@ -29,16 +29,18 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
+                @Html.DisplayFor(modelItem => item.Objetivo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataInicio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataFim)
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 

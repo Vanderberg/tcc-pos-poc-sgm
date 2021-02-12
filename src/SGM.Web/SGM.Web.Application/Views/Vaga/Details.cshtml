@@ -1,0 +1,43 @@
+@model SGM.Web.Application.Models.Vaga
+
+@{
+    ViewData["Title"] = "Modulo Gestão";
+    ViewData["Subtitle"] = "Treinamento - Detalhes";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["subtitle"]</h4>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataInicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataFim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataFim)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Voltar para lista</a>
+</div>

@@ -1,8 +1,8 @@
-@model SGM.Web.Application.Models.PoliticaPublica
+@model PoliticaPublica
 @{
     ViewData["Title"] = "Modulo Cidadão";
-    ViewData["Subtitle"] = "Politicas Publicas - Detalhes";
-    Layout = "_Layout";
+    ViewData["Subtitle"] = "Votar - Detalhes";
+    Layout = "_LayoutOFF";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -62,5 +62,5 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Voltar para lista</a>
+    <a asp-action="Index">Voltar para Lista</a>
 </div>

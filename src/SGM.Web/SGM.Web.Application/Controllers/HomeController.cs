@@ -28,14 +28,14 @@ namespace SGM.Web.Application.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IGenericService<PoliticaPublica> _politicaPublicaService;
-        private readonly IGenericService<Vaga> _vagaService;
+        private readonly IGenericService<Treinamento> _treinamentoService;
         private string host;
         private int port;
 
-        public HomeController(IConfiguration config, IGenericService<PoliticaPublica> politicaPublicaService, IGenericService<Vaga> vagaService)
+        public HomeController(IConfiguration config, IGenericService<PoliticaPublica> politicaPublicaService, IGenericService<Treinamento> treinamentoService)
         {
             _politicaPublicaService = politicaPublicaService;
-            _vagaService = vagaService;
+            _treinamentoService = treinamentoService;
             _configuration = config;
             Prepare();
         }
@@ -50,7 +50,7 @@ namespace SGM.Web.Application.Controllers
             this.host = this._configuration.GetSection("ConfigApp").GetSection("host").Value;
             this.port = ConfigurationBinder.GetValue<int>(this._configuration.GetSection("ConfigApp"), "port", 80);
             this._politicaPublicaService.SetUrl($"http://{host}:{port}/cidadao/PoliticaPublica");
-            this._vagaService.SetUrl($"http://{host}:{port}/gestao/vaga");
+            this._treinamentoService.SetUrl($"http://{host}:{port}/gestao/treinamento");
         } 
 
         public IActionResult Privacy()
@@ -62,45 +62,42 @@ namespace SGM.Web.Application.Controllers
         {
             Logoff();
             UserEntity objLoggedInUser = new UserEntity();
-                var claimsIndentity = HttpContext.User.Identity as ClaimsIdentity;
-                var userClaims = claimsIndentity.Claims;
+            var claimsIndentity = HttpContext.User.Identity as ClaimsIdentity;
+            var userClaims = claimsIndentity.Claims;
 
-                if (HttpContext.User.Identity.IsAuthenticated)
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                foreach (var claim in userClaims)
                 {
-                    foreach (var claim in userClaims)
+                    var cType = claim.Type;
+                    var cValue = claim.Value;
+                    switch (cType)
                     {
-                        var cType = claim.Type;
-                        var cValue = claim.Value;
-                        switch (cType)
-                        {
-                            case "USERID":
-                                objLoggedInUser.Email = cValue;
-                                break;
-                            case "EMAILID":
-                                objLoggedInUser.Email = cValue;
-                                break;
-                            case "ADMIN":
-                                objLoggedInUser.AcessLevel = Role.ADMIN;
-                                break;
-                            case "MONITOR":
-                                objLoggedInUser.AcessLevel = Role.MONITOR;
-                                break;
-                            case "USER_COMMON":
-                                objLoggedInUser.AcessLevel = Role.USER_COMMON;
-                                break;
-                        }
+                        case "USERID":
+                            objLoggedInUser.Email = cValue;
+                            break;
+                        case "EMAILID":
+                            objLoggedInUser.Email = cValue;
+                            break;
+                        case "ADMIN":
+                            objLoggedInUser.AcessLevel = Role.ADMIN;
+                            break;
+                        case "MONITOR":
+                            objLoggedInUser.AcessLevel = Role.MONITOR;
+                            break;
+                        case "USER_COMMON":
+                            objLoggedInUser.AcessLevel = Role.USER_COMMON;
+                            break;
                     }
-
-                
+                }
             }
             ViewBag.UserRole = GetRole();
             IEnumerable<PoliticaPublica> ListaPolitica = await _politicaPublicaService.FindAllAsync();
-            IEnumerable<Vaga> ListaVagas = await _vagaService.FindAllAsync();
+            IEnumerable<Treinamento> ListaTreinamento = await _treinamentoService.FindAllAsync();
             var viewModel = new HomeViewModel
             {
                 PoliticaPublica = ListaPolitica,
-                Vaga = ListaVagas
-                
+                Treinamento = ListaTreinamento 
             };
             return View(viewModel);
         }        
@@ -115,7 +112,6 @@ namespace SGM.Web.Application.Controllers
         {
             return View();
         }
-        
 
         public IActionResult Logoff()
         {
@@ -129,30 +125,39 @@ namespace SGM.Web.Application.Controllers
             var jsonContent = JsonConvert.SerializeObject(loginDto);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-            HttpClient client = new HttpClient();
-            var result = client.PostAsync($"http://{this.host}:{this.port}/auth/Login", content).Result;
-
-            string userToken = null;
-            if (result.IsSuccessStatusCode)
+            
+            try
             {
-                if (result.Content != null)
+                HttpClient client = new HttpClient();
+                var result = client.PostAsync($"http://{this.host}:{this.port}/auth/Login", content).Result;
+                
+                
+                string userToken = null;
+                if (result.IsSuccessStatusCode)
                 {
-                    var responseContent = await result.Content.ReadAsStringAsync();
-                    ResultToken resultToken = JsonConvert.DeserializeObject<ResultToken>(responseContent);
-                    userToken = resultToken.accessToken;
-                    user.IsAuthenticated = true;
+                    if (result.Content != null)
+                    {
+                        var responseContent = await result.Content.ReadAsStringAsync();
+                        ResultToken resultToken = JsonConvert.DeserializeObject<ResultToken>(responseContent);
+                        userToken = resultToken.accessToken;
+                        user.IsAuthenticated = true;
+                    }
                 }
+                
+                if (userToken != null)
+                {
+                   HttpContext.Session.SetString("JWToken", userToken);   //Save token in session object
+                   return Redirect("~/modulos/Index");
+                }
+                else
+                {
+                    return Redirect("~/home/Index");
+                }   
             }
-
-            if (userToken != null)
+            catch (Exception e)
             {
-               HttpContext.Session.SetString("JWToken", userToken);   //Save token in session object
-               return Redirect("~/modulos/Index");
+                return RedirectToAction(nameof(Error), new { message = e.Message });
             }
-            else
-            {
-                return Redirect("~/home/Index");
-            }   
         }
         
         private LoginDto ConverteUserToLoginDto(UserEntity user)

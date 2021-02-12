@@ -18,8 +18,8 @@ namespace SGM.Cidadao.Application.Controllers
             _service = service;
         }
         
-        [Authorize("Bearer")]
-        [HttpPut]
+        //[Authorize("Bearer")]
+        [HttpGet]
         public async Task<ActionResult> Votar(Guid id)
         {
             if (!ModelState.IsValid)

@@ -59,11 +59,6 @@ namespace SGM.Web.Application.Services
 
         public async Task<T> FindByIdAsync(Guid id, string recurso = "")
         {
-            //if (id == null )
-            //{
-            //    return default(T);
-            //}
-
             string url = String.IsNullOrEmpty(recurso) ? this._url : String.Concat(this._url, "/", recurso);
 
             this._logger.LogDebug("##### FindByIdAsync #####");
@@ -77,13 +72,23 @@ namespace SGM.Web.Application.Services
             return obj;
         }
 
-        public async Task<T> CompleteFindByIdAsync(int id)
+        public async Task<T> VotarByIdAsync(Guid id, string recurso = "")
         {
-            if (id == 0)
-            {
-                return default(T);
-            }
+            string url = String.IsNullOrEmpty(recurso) ? this._url : String.Concat(this._url, "/", recurso);
 
+            this._logger.LogDebug("##### VotarByIdAsync #####");
+            this._logger.LogDebug(url);
+
+            var response = await _clientHttp.GetAsync(string.Concat(url, $"?id={id}"));
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            T obj = JsonConvert.DeserializeObject<T>(responseBody);
+
+            return obj;
+        }        
+
+        public async Task<T> CompleteFindByIdAsync(Guid id)
+        {
             string url = string.Concat(this._url, $"/completo/{id}");
 
             this._logger.LogDebug("##### CompleteFindByIdAsync #####");
@@ -121,7 +126,7 @@ namespace SGM.Web.Application.Services
             return 0;
         }
 
-        public async Task<bool> UpdateAsync(int id, T obj, string recurso = "")
+        public async Task<bool> UpdateAsync(Guid id, T obj, string recurso = "")
         {
             string url = String.IsNullOrEmpty(recurso) ? this._url : String.Concat(this._url, "/", recurso);
 
@@ -130,7 +135,8 @@ namespace SGM.Web.Application.Services
 
             var jsonContent = JsonConvert.SerializeObject(obj);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _clientHttp.PutAsync(string.Concat(url, $"/{id}"), content);
+            string.Concat(url, $"/{id}");
+            HttpResponseMessage response = await _clientHttp.PutAsync(url, content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -145,13 +151,9 @@ namespace SGM.Web.Application.Services
             return false;
         }
 
-        public async Task<bool> DeleteAsync(int id, string recurso = "")
+        public async Task<bool> DeleteAsync(Guid id, string recurso = "")
         {
-            if (id == 0)
-            {
-                return false;
-            }
-
+            
             string url = String.IsNullOrEmpty(recurso) ? this._url : String.Concat(this._url, "/", recurso);
 
             this._logger.LogDebug("##### DeleteAsync #####");

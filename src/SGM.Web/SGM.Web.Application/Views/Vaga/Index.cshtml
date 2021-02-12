@@ -1,8 +1,40 @@
-@model object
-
+@model IEnumerable<SGM.Web.Application.Models.Vaga>
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    Layout = "_Layout";                                               
+    ViewData["Title"] = "Modulo Gestão";
+    ViewData["Subtitle"] = "Vagas";
 }
 
-<h2>title</h2>
+<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["subtitle"]</h4>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr class="success">
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>
+
+    }
+    </tbody>
+</table>

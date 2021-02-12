@@ -1,0 +1,48 @@
+@model IEnumerable<SGM.Web.Application.Models.Votacao>
+
+@{
+    Layout = "_LayoutOFF";
+    ViewData["Title"] = "Modulo Cidadão";
+    ViewData["Subtitle"] = "Votacao";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["subtitle"]</h4>
+
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr class="success">
+        <th>
+            @Html.DisplayNameFor(model => model.CampanhaDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PoliticaTitulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Votos)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CampanhaDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoliticaTitulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Votos)
+            </td>
+            <td>
+                <a asp-controller="Votacao" asp-action="Details" asp-route-id="@item.PoliticaPublicaID">Details</a>
+                <a asp-controller="Votacao" asp-action="Votar" asp-route-id="@item.Id">Votar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

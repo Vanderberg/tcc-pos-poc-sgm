@@ -2,8 +2,8 @@
 
 @{
     ViewData["Title"] = "Modulo Cidadão";
-    ViewData["Subtitle"] = "Politicas Publicas";
-    Layout = "_Layout";
+    ViewData["Subtitle"] = "Votar";
+    Layout = "_LayoutOFF";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -16,7 +16,16 @@
             @Html.DisplayNameFor(model => model.Titulo)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DescricaoArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeResponsavel)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.DataPrevista)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrcamentoPrevisto)
         </th>
         <th></th>
     </tr>
@@ -29,7 +38,16 @@
                 @Html.DisplayFor(modelItem => item.Titulo)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DescricaoArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeResponsavel)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DataPrevista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrcamentoPrevisto)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a>

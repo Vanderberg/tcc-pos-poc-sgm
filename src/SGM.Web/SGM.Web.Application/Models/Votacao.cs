@@ -1,14 +1,18 @@
-﻿using System;
-using SGM.Shared.Domain.Entities;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace SGM.Cidadao.Domain.Entities
+namespace SGM.Web.Application.Models
 {
-    public class VotacaoEntity : BaseEntity
+    public class Votacao
     {
+        public Guid Id { get; set; }
         public int Votos { get; set; }
         public Guid CampanhaID { get; set; }
+        
+        [Display(Name = "Campanha")]
         public string CampanhaDescricao { get; set; }
         public Guid PoliticaPublicaID { get; set; }
+        [Display(Name = "Titulo")]
         public string PoliticaTitulo { get; set; }
     }
 }

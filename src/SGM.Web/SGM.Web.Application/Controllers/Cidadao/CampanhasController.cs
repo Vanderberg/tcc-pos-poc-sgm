@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using SGM.Web.Application.Controllers.Filters;
 using SGM.Web.Application.Models;
+using SGM.Web.Application.Models.ViewModels;
 using SGM.Web.Application.Services;
 
 namespace SGM.Web.Application.Controllers
@@ -40,22 +42,39 @@ namespace SGM.Web.Application.Controllers
         // GET
         public async Task<IActionResult> Index()
         {
-            return View(await _campanhaService.FindAllAsync());
+            try
+            {
+                return View(await _campanhaService.FindAllAsync());
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
         }
+        
+        public async Task<IActionResult> Details(Guid? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não preenchido" });
+            }
 
-        public IActionResult Edit()
-        {
-            return View();
+            var obj = await _campanhaService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+            }
+            return View(obj);
         }
         
-        public IActionResult Detalhe()
+        public IActionResult Error(string message)
         {
-            return View();
-        }
-        
-        public IActionResult Delete()
-        {
-            return View();
-        }        
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
+        }         
     }
 }
