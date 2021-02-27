@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace SGM.Web.Application.Controllers.Filters
 {
-    public class PegarTokenActionFilter : ActionFilterAttribute, IActionFilter
+    public class RoleActionFilter : ActionFilterAttribute, IActionFilter
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var controller = (BaseController) context.Controller;
-            controller.SetToken(controller.HttpContext.Session.GetString("JWToken"));
+            var controller = (BaseController)context.Controller;
             controller.ViewBag.UserRole = controller.HttpContext.Session.GetString("RoleAcces");
         }
     }
