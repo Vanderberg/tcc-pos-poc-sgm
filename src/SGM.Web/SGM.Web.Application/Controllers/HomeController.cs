@@ -28,14 +28,14 @@ namespace SGM.Web.Application.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IGenericService<PoliticaPublica> _politicaPublicaService;
-        private readonly IGenericService<Treinamento> _treinamentoService;
+        private readonly IGenericService<Vaga> _VagaService;
         private string host;
         private int port;
 
-        public HomeController(IConfiguration config, IGenericService<PoliticaPublica> politicaPublicaService, IGenericService<Treinamento> treinamentoService)
+        public HomeController(IConfiguration config, IGenericService<PoliticaPublica> politicaPublicaService, IGenericService<Vaga> vagaService)
         {
             _politicaPublicaService = politicaPublicaService;
-            _treinamentoService = treinamentoService;
+            _VagaService = vagaService;
             _configuration = config;
             Prepare();
         }
@@ -50,7 +50,7 @@ namespace SGM.Web.Application.Controllers
             this.host = this._configuration.GetSection("ConfigApp").GetSection("host").Value;
             this.port = ConfigurationBinder.GetValue<int>(this._configuration.GetSection("ConfigApp"), "port", 80);
             this._politicaPublicaService.SetUrl($"http://{host}:{port}/cidadao/PoliticaPublica");
-            this._treinamentoService.SetUrl($"http://{host}:{port}/gestao/treinamento");
+            this._VagaService.SetUrl($"http://{host}:{port}/gestao/vaga");
         } 
 
         public IActionResult Privacy()
@@ -93,11 +93,11 @@ namespace SGM.Web.Application.Controllers
             }
             ViewBag.UserRole = GetRole();
             IEnumerable<PoliticaPublica> ListaPolitica = await _politicaPublicaService.FindAllAsync();
-            IEnumerable<Treinamento> ListaTreinamento = await _treinamentoService.FindAllAsync();
+            IEnumerable<Vaga> ListaVagas = await _VagaService.FindAllAsync();
             var viewModel = new HomeViewModel
             {
                 PoliticaPublica = ListaPolitica,
-                Treinamento = ListaTreinamento 
+                Vagas = ListaVagas 
             };
             return View(viewModel);
         }        
@@ -118,6 +118,20 @@ namespace SGM.Web.Application.Controllers
             HttpContext.Session.Clear();
             return Redirect("~/Home/Index");
         }
+        
+        public IActionResult NoPermission()
+        {
+            ViewBag.UserRole = GetRole();
+            return View("NoPermission");
+        }
+        
+#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
+        public IActionResult Unauthorized()
+#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
+        {
+            ViewBag.UserRole = GetRole();
+            return View("Unauthorized");
+        }        
         
         public async Task<IActionResult> LoginUser(UserEntity user)
         {
