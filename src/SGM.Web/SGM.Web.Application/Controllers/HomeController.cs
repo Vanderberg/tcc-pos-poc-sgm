@@ -61,37 +61,7 @@ namespace SGM.Web.Application.Controllers
         public async Task<IActionResult> Index()
         {
             Logoff();
-            UserEntity objLoggedInUser = new UserEntity();
-            var claimsIndentity = HttpContext.User.Identity as ClaimsIdentity;
-            var userClaims = claimsIndentity.Claims;
-
-            if (HttpContext.User.Identity.IsAuthenticated)
-            {
-                foreach (var claim in userClaims)
-                {
-                    var cType = claim.Type;
-                    var cValue = claim.Value;
-                    switch (cType)
-                    {
-                        case "USERID":
-                            objLoggedInUser.Email = cValue;
-                            break;
-                        case "EMAILID":
-                            objLoggedInUser.Email = cValue;
-                            break;
-                        case "ADMIN":
-                            objLoggedInUser.AcessLevel = Role.ADMIN;
-                            break;
-                        case "MONITOR":
-                            objLoggedInUser.AcessLevel = Role.MONITOR;
-                            break;
-                        case "USER_COMMON":
-                            objLoggedInUser.AcessLevel = Role.USER_COMMON;
-                            break;
-                    }
-                }
-            }
-            ViewBag.UserRole = GetRole();
+            
             IEnumerable<PoliticaPublica> ListaPolitica = await _politicaPublicaService.FindAllAsync();
             IEnumerable<Vaga> ListaVagas = await _VagaService.FindAllAsync();
             var viewModel = new HomeViewModel
@@ -119,19 +89,7 @@ namespace SGM.Web.Application.Controllers
             return Redirect("~/Home/Index");
         }
         
-        public IActionResult NoPermission()
-        {
-            ViewBag.UserRole = GetRole();
-            return View("NoPermission");
-        }
-        
-#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
-        public IActionResult Unauthorized()
-#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
-        {
-            ViewBag.UserRole = GetRole();
-            return View("Unauthorized");
-        }        
+       
         
         public async Task<IActionResult> LoginUser(UserEntity user)
         {
@@ -144,8 +102,7 @@ namespace SGM.Web.Application.Controllers
             {
                 HttpClient client = new HttpClient();
                 var result = client.PostAsync($"http://{this.host}:{this.port}/auth/Login", content).Result;
-                
-                
+
                 string userToken = null;
                 if (result.IsSuccessStatusCode)
                 {
@@ -154,13 +111,15 @@ namespace SGM.Web.Application.Controllers
                         var responseContent = await result.Content.ReadAsStringAsync();
                         ResultToken resultToken = JsonConvert.DeserializeObject<ResultToken>(responseContent);
                         userToken = resultToken.accessToken;
-                        user.IsAuthenticated = true;
+                        HttpContext.Session.SetString("Role", resultToken.role.ToString());
+                        HttpContext.Session.SetString("IsAuthenticated", true.ToString());
                     }
                 }
                 
                 if (userToken != null)
                 {
                    HttpContext.Session.SetString("JWToken", userToken);   //Save token in session object
+                   
                    return Redirect("~/modulos/Index");
                 }
                 else
@@ -179,26 +138,7 @@ namespace SGM.Web.Application.Controllers
             return new LoginDto(user.CPF, user.Password);
         }
         
-        private string GetRole()
-        {
-            string valor = "";
-            if (this.HavePermission(Role.ADMIN))
-                valor = " - ADMIN";
-            else
-            if (this.HavePermission(Role.MONITOR))
-                valor = " - MONITOR";
-            else
-            if (this.HavePermission(Role.MAINTENANCE))
-                valor = " - MAINTENANCE";
-            else
-            if (this.HavePermission(Role.USER_COMMON))
-                valor = " - USER_COMMON";
-            else
-                valor = "NOTHING";
-
-            HttpContext.Session.SetString("RoleAcces", valor);
-            return valor;
-        }
+        
         
     }
 }

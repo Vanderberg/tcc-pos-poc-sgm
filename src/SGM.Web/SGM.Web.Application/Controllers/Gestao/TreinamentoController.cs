@@ -2,10 +2,11 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+//using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using SGM.Shared.Domain.Entities.Enums;
+using SGM.Web.Application.Controllers.FilterCustom; //custom
 using SGM.Web.Application.Controllers.Filters;
 using SGM.Web.Application.Models;
 using SGM.Web.Application.Models.ViewModels;
@@ -14,9 +15,9 @@ using SGM.Web.Application.Services.Exceptions;
 
 namespace SGM.Web.Application.Controllers.Gestao
 {
-    //[Authorize(nameof(Role.ADMIN))]
+    [Authorize(TipoRetornoAcesso.WEB, Role.ADMIN, Role.MONITOR)]
     [PegarTokenActionFilter]
-    //[RoleActionFilter]
+    [RoleActionFilter]
     public class TreinamentoController : BaseController
     {
         private readonly IConfiguration _configuration;

@@ -1,4 +1,5 @@
 using System;
+using SGM.Shared.Domain.Entities.Enums;
 
 namespace SGM.Shared.Domain.Results
 {
@@ -7,6 +8,11 @@ namespace SGM.Shared.Domain.Results
         public string Message { get; set; }
         public string accessToken { get; set; }
         public DateTime Expire { get; set; }
+        
+        public Role role { get; set; }
+        
+        public Boolean authenticated  { get; set; }
+        
 
         public ResultToken() : base(false)
         {
