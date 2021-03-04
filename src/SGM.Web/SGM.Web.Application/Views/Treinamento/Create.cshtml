@@ -1,13 +1,12 @@
 @model SGM.Web.Application.Models.Treinamento
 @{
     ViewData["Title"] = "Modulo Gestão";
-    ViewData["Subtitle"] = "Treinamentos";
+    ViewData["Subtitle"] = "Treinamentos - Cadastrar";
 }
 
 <h2>@ViewData["Title"]</h2>
 <h4>@ViewData["subtitle"]</h4>
 
-<h2>Create</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -34,13 +33,13 @@
                 <input asp-for="DataFim" class="form-control" />
             </div>                        
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <input type="submit" value="Inserir" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar para Lista</a>
 </div>
 
 @section Scripts {

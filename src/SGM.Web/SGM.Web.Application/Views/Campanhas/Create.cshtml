@@ -1,8 +1,7 @@
 @model SGM.Web.Application.Models.Campanha
-
 @{
     ViewData["Title"] = "Modulo Cidadão";
-    ViewData["Subtitle"] = "Campanhas - Editar";
+    ViewData["Subtitle"] = "Campanha - Cadastrar";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -11,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Descricao" class="control-label"></label>
@@ -26,7 +25,7 @@
                 <input asp-for="DataFim" class="form-control" />
             </div>                        
             <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-success" />
+                <input type="submit" value="Inserir" class="btn btn-success" />
             </div>
         </form>
     </div>
