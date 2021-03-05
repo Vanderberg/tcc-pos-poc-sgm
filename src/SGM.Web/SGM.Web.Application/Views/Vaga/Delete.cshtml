@@ -1,8 +1,8 @@
-@model SGM.Web.Application.Models.Treinamento
+@model SGM.Web.Application.Models.Vaga
 
 @{
     ViewData["Title"] = "Módulo Gestão";
-    ViewData["Subtitle"] = "Treinamento - Excluir";
+    ViewData["Subtitle"] = "Vaga - Excluir";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -14,22 +14,10 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Objetivo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Objetivo)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Descricao)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Descricao)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Cronogrmana)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Cronogrmana)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.DataInicio)
@@ -42,7 +30,7 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.DataFim)
-        </dd>        
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Status)
         </dt>

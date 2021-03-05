@@ -1,13 +1,17 @@
 @model System.Collections.Generic.IEnumerable<SGM.Web.Application.Models.PoliticaPublica>
 
 @{
-    ViewData["Title"] = "Modulo Cidadão";
-    ViewData["Subtitle"] = "Politicas Publicas";
+    ViewData["Title"] = "Módulo Cidadão";
+    ViewData["Subtitle"] = "Políticas Públicas";
     Layout = "_Layout";
 }
 
 <h2>@ViewData["Title"]</h2>
 <h4>@ViewData["subtitle"]</h4>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo</a>
+</p>
 
 <table class="table table-striped table-hover">
     <thead>
@@ -32,8 +36,10 @@
                 @Html.DisplayFor(modelItem => item.DataPrevista)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-            </td>
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a> 
+            </td> 
         </tr>
 
     }

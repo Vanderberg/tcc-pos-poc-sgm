@@ -1,0 +1,59 @@
+@model SGM.Web.Application.Models.PoliticaPublica
+@{
+    ViewData["Title"] = "Módulo Cidadão";
+    ViewData["Subtitle"] = "Política Pública - Cadastrar";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["subtitle"]</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label-bold"></label>
+                <input asp-for="Titulo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label-bold"></label>
+                <input asp-for="Descricao" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DescricaoArea" class="control-label-bold"></label>
+                <input asp-for="DescricaoArea" class="form-control" />
+            </div>   
+            <div class="form-group">
+                <label asp-for="NomeResponsavel" class="control-label-bold"></label>
+                <input asp-for="NomeResponsavel" class="form-control" />
+            </div>            
+            <div class="form-group">
+                <label asp-for="OrcamentoPrevisto" class="control-label-bold"></label>
+                <input asp-for="OrcamentoPrevisto" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DataPrevista" class="control-label-bold"></label>
+                <input asp-for="DataPrevista" class="form-control" />
+            </div>   
+            <div class="form-group">
+                <label asp-for="OrcamentoRealizado" class="control-label"></label>
+                <input asp-for="OrcamentoRealizado" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DataRealizada" class="control-label"></label>
+                <input asp-for="DataRealizada" class="form-control" />
+            </div>             
+            <div class="form-group">
+                <input type="submit" value="Inserir" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Voltar para Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

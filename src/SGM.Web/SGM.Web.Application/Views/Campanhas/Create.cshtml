@@ -1,6 +1,6 @@
 @model SGM.Web.Application.Models.Campanha
 @{
-    ViewData["Title"] = "Modulo Cidadão";
+    ViewData["Title"] = "Módulo Cidadão";
     ViewData["Subtitle"] = "Campanha - Cadastrar";
 }
 
@@ -13,15 +13,15 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
+                <label asp-for="Descricao" class="control-label-bold"></label>
                 <input asp-for="Descricao" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="DataInicio" class="control-label"></label>
+                <label asp-for="DataInicio" class="control-label-bold"></label>
                 <input asp-for="DataInicio" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="DataFim" class="control-label"></label>
+                <label asp-for="DataFim" class="control-label-bold"></label>
                 <input asp-for="DataFim" class="form-control" />
             </div>                        
             <div class="form-group">

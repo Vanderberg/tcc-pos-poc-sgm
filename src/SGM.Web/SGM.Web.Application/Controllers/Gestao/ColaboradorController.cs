@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -60,7 +61,82 @@ namespace SGM.Web.Application.Controllers.Gestao
             }
 
             return View(obj);
+        }     
+        
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Colaborador colaborador)
+        {
+            try
+            {
+                await _colaboradorService.InsertAsync(colaborador);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction(nameof(Error), new { message =  e.Message });
+            }
+        }      
+
+        public async Task<IActionResult> Edit(Guid? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não preenchido" });
+            }
+
+            var obj = await _colaboradorService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+            }
+            
+            return View(obj);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid? id, Colaborador colaborador)
+        {
+            await _colaboradorService.UpdateAsync(id.Value, colaborador);
+            return RedirectToAction(nameof(Index));
         }        
+
+        public async Task<IActionResult> Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não preenchido" });
+            }
+
+            var obj = await _colaboradorService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+            }
+           
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _colaboradorService.DeleteAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
+        }
         
         public IActionResult Error(string message)
         {

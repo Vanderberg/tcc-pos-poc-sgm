@@ -7,6 +7,7 @@ using SGM.Web.Application.Controllers.Filters;
 using SGM.Web.Application.Models;
 using SGM.Web.Application.Models.ViewModels;
 using SGM.Web.Application.Services;
+using SGM.Web.Application.Services.Exceptions;
 
 namespace SGM.Web.Application.Controllers
 {
@@ -62,7 +63,82 @@ namespace SGM.Web.Application.Controllers
             }
 
             return View(obj);
-        }              
+        } 
+        
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Vaga vaga)
+        {
+            try
+            {
+                await _vagaService.InsertAsync(vaga);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction(nameof(Error), new { message =  e.Message });
+            }
+        }
+
+        public async Task<IActionResult> Edit(Guid? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não preenchido" });
+            }
+
+            var obj = await _vagaService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+            }
+            
+            return View(obj);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid? id, Vaga vaga)
+        {
+            await _vagaService.UpdateAsync(id.Value, vaga);
+            return RedirectToAction(nameof(Index));
+        }
+        
+        public async Task<IActionResult> Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não preenchido" });
+            }
+
+            var obj = await _vagaService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+            }
+           
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _vagaService.DeleteAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
+        }        
 
         public IActionResult Error(string message)
         {

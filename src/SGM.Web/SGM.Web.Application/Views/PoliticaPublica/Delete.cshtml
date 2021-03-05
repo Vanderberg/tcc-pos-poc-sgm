@@ -1,12 +1,14 @@
 @model SGM.Web.Application.Models.PoliticaPublica
+
 @{
     ViewData["Title"] = "Módulo Cidadão";
-    ViewData["Subtitle"] = "Políticas Públicas - Detalhes";
-    Layout = "_Layout";
+    ViewData["Subtitle"] = "Política Pública - Excluir";
 }
 
 <h2>@ViewData["Title"]</h2>
 <h4>@ViewData["subtitle"]</h4>
+
+<h3>Tem certeza de que deseja excluir?</h3>
 
 <div>
     <hr />
@@ -28,39 +30,44 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.DescricaoArea)
-        </dd>        
-        <dt>
-            @Html.DisplayNameFor(model => model.DataPrevista)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DataPrevista)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OrcamentoPrevisto)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OrcamentoPrevisto)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DataRealizada)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DataRealizada)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OrcamentoRealizado)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OrcamentoRealizado)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.NomeResponsavel)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NomeResponsavel)
+        </dd>   
+        <dt>
+            @Html.DisplayNameFor(model => model.OrcamentoPrevisto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrcamentoPrevisto)
         </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.DataPrevista)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataPrevista)
+        </dd>    
+        <dt>
+            @Html.DisplayNameFor(model => model.OrcamentoRealizado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrcamentoRealizado)
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.DataRealizada)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataRealizada)
+        </dd>         
     </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" />
+    </form>
 </div>
 <div>
-    <a asp-action="Index">Voltar para lista</a>
+    <a asp-action="Index">Voltar para Lista</a>
 </div>

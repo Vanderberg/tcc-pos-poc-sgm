@@ -7,6 +7,7 @@ using SGM.Cidadao.Domain.Entities;
 using SGM.Web.Application.Models;
 using SGM.Web.Application.Models.ViewModels;
 using SGM.Web.Application.Services;
+using SGM.Web.Application.Services.Exceptions;
 
 namespace SGM.Web.Application.Controllers
 {
@@ -34,6 +35,81 @@ namespace SGM.Web.Application.Controllers
             int port = ConfigurationBinder.GetValue<int>(this._configuration.GetSection("ConfigApp"), "port", 80);
             this._politicaPublicaService.SetUrl($"http://{host}:{port}/cidadao/politicaPublica");
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(PoliticaPublica politicaPublica)
+        {
+            try
+            {
+                await _politicaPublicaService.InsertAsync(politicaPublica);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction(nameof(Error), new { message =  e.Message });
+            }
+        }
+        
+        public async Task<IActionResult> Edit(Guid? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não preenchido" });
+            }
+
+            var obj = await _politicaPublicaService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+            }
+            
+            return View(obj);
+        }        
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid? id, PoliticaPublica politicaPublica)
+        {
+            await _politicaPublicaService.UpdateAsync(id.Value, politicaPublica);
+            return RedirectToAction(nameof(Index));
+        }
+        
+        public async Task<IActionResult> Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não preenchido" });
+            }
+
+            var obj = await _politicaPublicaService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+            }
+           
+            return View(obj);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _politicaPublicaService.DeleteAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
+        }            
         
         // GET
         public async Task<IActionResult> Index()

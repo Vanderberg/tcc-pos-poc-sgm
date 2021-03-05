@@ -1,7 +1,7 @@
 @model System.Collections.Generic.IEnumerable<SGM.Web.Application.Models.PoliticaPublica>
 
 @{
-    ViewData["Title"] = "Modulo Cidadão";
+    ViewData["Title"] = "Módulo Cidadão";
     ViewData["Subtitle"] = "Votar";
     Layout = "_LayoutOFF";
 }
@@ -50,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.OrcamentoPrevisto)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
             </td>
         </tr>
 
