@@ -1,51 +1,15 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SGM.Shared.Domain.Entities;
 using SGM.Shared.Domain.Entities.Enums;
 using SGM.Web.Application.CustomAttributes;
 
 namespace SGM.Web.Application.Controllers
 {
-    public class ModulosController : Controller
+    public class ModulosController : BaseController
     {
         // GET
         public IActionResult Index()
         {
-          /*  UserEntity objLoggedInUser = new UserEntity();
-            var claimsIndentity = HttpContext.User.Identity as ClaimsIdentity;
-            var userClaims = claimsIndentity.Claims;
-
-            if (HttpContext.Session.GetString("IsAuthenticated").Equals(true.ToString()))
-            {
-                foreach (var claim in userClaims)
-                {
-                    var cType = claim.Type;
-                    var cValue = claim.Value;
-                    switch (cType)
-                    {
-                        case "USERID":
-                            objLoggedInUser.Email = cValue;
-                            break;
-                        case "EMAILID":
-                            objLoggedInUser.Email = cValue;
-                            break;
-                        case "ADMIN":
-                            objLoggedInUser.AcessLevel = Role.ADMIN;
-                            break;
-                        case "MONITOR":
-                            objLoggedInUser.AcessLevel = Role.MONITOR;
-                            break;
-                        case "USER_COMMON":
-                            objLoggedInUser.AcessLevel = Role.USER_COMMON;
-                            break;
-                    }
-                }
-            }
-
-            ViewBag.UserRole = HttpContext.Session.GetString("Role");
-            */
-            
             return View();
         }
         
@@ -82,6 +46,16 @@ namespace SGM.Web.Application.Controllers
 
             HttpContext.Session.SetString("RoleAcces", valor);
             return valor;
+        }
+
+        public override void SetToken(string token)
+        {
+            //throw new System.NotImplementedException();
+        }
+
+        protected override void Prepare()
+        {
+            //throw new System.NotImplementedException();
         }
     }
 }

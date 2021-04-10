@@ -39,7 +39,7 @@
                 @Html.DisplayFor(modelItem => item.Votos)
             </td>
             <td>
-                <a asp-controller="Votacao" asp-action="Details" asp-route-id="@item.PoliticaPublicaID">Detalhes</a>
+                <a asp-controller="Votacao" asp-action="Details" asp-route-id="@item.PoliticaPublicaID">Detalhes</a> |
                 <a asp-controller="Votacao" asp-action="Votar" asp-route-id="@item.Id">Votar</a>
             </td>
         </tr>

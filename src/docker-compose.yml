@@ -6,7 +6,6 @@ networks:
   rede_web:    
 
 services:
-
   db:
     container_name: mysql-db-poc
     image: mysql:5.7
@@ -17,7 +16,7 @@ services:
       - mysql.env
     volumes:
       # Volume dos dados 
-      - ../dados:/var/lib/mysql
+      - ./dados:/var/lib/mysql
     networks:
       - rede_services
     healthcheck:
@@ -39,7 +38,7 @@ services:
       
   authentication:
     container_name: sgm.auth
-    image: ${DOCKER_REGISTRY-}sgm.auth
+    image: vandernunes/sgm.auth
     build:
       context: .
       dockerfile: SGM.Auth/SGM.Auth.Application/Dockerfile 
@@ -54,7 +53,7 @@ services:
       
   cidadao:
     container_name: sgm.cidadao
-    image: ${DOCKER_REGISTRY-}sgm.cidadao
+    image: vandernunes/sgm.cidadao
     build:
       context: .
       dockerfile: SGM.Cidadao/SGM.Cidadao.Application/Dockerfile 
@@ -69,7 +68,7 @@ services:
       
   gestao:
     container_name: sgm.gestao
-    image: ${DOCKER_REGISTRY-}sgm.gestao
+    image: vandernunes/sgm.gestao
     build:
       context: .
       dockerfile: SGM.Gestao/SGM.Gestao.Application/Dockerfile 
@@ -84,14 +83,14 @@ services:
 
   web:
     container_name: sgm.web
-    image: ${DOCKER_REGISTRY-}sgm.web
+    image: vandernunes/sgm.web
     build:
       context: .
       dockerfile: SGM.Web/SGM.Web.Application/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
     ports:
-      - "81:80"
+      - "80:80"
     depends_on:
       - gateway
     networks:
@@ -100,7 +99,7 @@ services:
       
   gateway:
     container_name: sgm.gateway    
-    image: ${DOCKER_REGISTRY-}sgm.gateway
+    image: vandernunes/sgm.gateway
     build:
       context: .
       dockerfile: SGM.Gateway/SGM.Gateway.Application/Dockerfile 
@@ -113,4 +112,4 @@ services:
     networks:
       - rede_gateway
       - rede_services
-      
+     
